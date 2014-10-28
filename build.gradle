@@ -17,13 +17,13 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-0.1.34"
-group= "com.github.morethanhidden.molecularrelativity" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "molecularrelativity"
+version = "1.7.10-0.0.1"
+group= "com.github.morethanhidden.moleculargems" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "moleculargems"
 
 minecraft {
-    version = "1.7.10-10.13.0.1208"
-    assetDir = "eclipse/assets"
+    version = "1.7.10-10.13.2.1230"
+    assetDir = "eclipse"
 }
 
 dependencies {
