@@ -11,6 +11,7 @@ import com.github.morethanhidden.MolecularGems.items.AscendedGem;
 import com.github.morethanhidden.MolecularGems.items.CleanGem;
 import com.github.morethanhidden.MolecularGems.items.BucketLiquidElectricOoze;
 import com.github.morethanhidden.MolecularGems.items.GemCompoundItem;
+import com.github.morethanhidden.MolecularGems.mob.MolecularMobs;
 import com.github.morethanhidden.MolecularGems.world.MolecularWorld;
 import com.github.morethanhidden.MolecularGems.world.WorldGenMoleculer;
 
@@ -79,8 +80,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        @SidedProxy(clientSide="com.github.morethanhidden.MolecularGems.Client.ClientProxy", serverSide="com.github.morethanhidden.MolecularGems.common")
 	        public static common proxy;
 	        
+	        @EventHandler // used in 1.6.2
+	        //@PreInit    // used in 1.5.2
 	        public void preLoad(FMLPreInitializationEvent PreEvent) {
 	        MolecularWorld.mainRegistry();
+	        MolecularMobs.mainRegistry();
 	        }
 	        
 	        //Creative tab for my mod
@@ -95,6 +99,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        @EventHandler // used in 1.6.2
 	        //@PreInit    // used in 1.5.2
 	        public void preInit(FMLPreInitializationEvent event) {  
+	        	
 	        	
 	        	FluidRegistry.registerFluid(liquidElectricOoze);
 	        	blockElectricOooze = new BlockLiquidElectricOoze(liquidElectricOoze, Material.water).setBlockName("liquidEUze");

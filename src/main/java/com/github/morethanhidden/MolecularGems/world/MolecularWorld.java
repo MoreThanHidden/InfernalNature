@@ -1,4 +1,4 @@
-package com.github.morethanhidden.MolecularGems.world;
+ package com.github.morethanhidden.MolecularGems.world;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.registry.GameRegistry;
