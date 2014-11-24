@@ -12,6 +12,7 @@ public class MolecularMobs {
 	
 	public static void mainRegistry(){
 		registerEntity();
+		
 	}
 
 	private static void registerEntity() {
@@ -25,7 +26,8 @@ public class MolecularMobs {
 	int randomId = EntityRegistry.findGlobalUniqueEntityId();
 	EntityRegistry.registerGlobalEntityID(entityClass, entityName, randomId);
 	EntityRegistry.registerModEntity(entityClass, entityName, randomId, MainRegistry.instance, 10, 1, true);
-	EntityRegistry.addSpawn(entityClass, 2, 0, 1, EnumCreatureType.monster, BiomeGenBase.forest);
+	EntityRegistry.addSpawn(entityClass, 40, 1, 2, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.forest, 
+			BiomeGenBase.forestHills, BiomeGenBase.swampland);
 	
 	createEgg(randomId, solidColour, spotColour);
 	

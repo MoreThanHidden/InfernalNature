@@ -9,20 +9,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 
-public class CleanGem extends Item {
+public class CleanGem extends ItemFood {
 	public static final String[] itemNames = new String[] {"RedGem", "BlueGem", "GreenGem"};
 	
 	@SideOnly(Side.CLIENT)
 	private IIcon[] item_icon;
 	
 	public CleanGem() {
+		 super(1, true);
 		setHasSubtypes(true);
 		maxStackSize = 64;
         setCreativeTab(MainRegistry.tabmoleculargems);
+        setPotionEffect(10, 10, 1, 1);
 }
 
 	int itemcount = 3;

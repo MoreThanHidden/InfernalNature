@@ -170,15 +170,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                LanguageRegistry.addName(bucketliquidElectricOoze, "Electric Ooze Bucket");
 	                LanguageRegistry.addName(blockElectricOooze, "Electric Ooze");
 	                LanguageRegistry.addName(gemcompoundItem, "Ascended Gem Compound");
-	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 0), "Red Gem");
-	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 1), "Blue Gem");
-	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 2), "Green Gem");
+	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 0), "Flameoid Gem");
+	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 1), "Electroid Gem");
+	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 2), "Naturoid Gem");
 	                
 	                LanguageRegistry.instance().addStringLocalization("achievement.minegem", "en_US", "Oooh Shiny!");
 	                LanguageRegistry.instance().addStringLocalization("achievement.electrifying", "en_US", "A Electrifying Experience!");
 	                LanguageRegistry.instance().addStringLocalization("achievement.minegem.desc", "en_US", "Mine a Gem Ore");
 	                LanguageRegistry.instance().addStringLocalization("achievement.electrifying.desc", "en_US", "Step into some Electric Ooze");
 	                LanguageRegistry.instance().addStringLocalization("itemGroup.Molecular Gems", "en_US", "Molecular Gems");
+	                LanguageRegistry.instance().addStringLocalization("entity.Ghost of Ancients.name", "Ghost of the Ancients");
+	        
 	        }
 	        
 	        public static void oreRegistration()
@@ -186,9 +188,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                //1.3.2 OreDictionary.registerOre("ingotCopper", new ItemStack(ingotCopper));
 	                //1.6.4
 	                OreDictionary.registerOre("oreGem", gemOre);
-	                OreDictionary.registerOre("gemRed", new ItemStack(cleanGem, 1, 0));
-	                OreDictionary.registerOre("gemBlue", new ItemStack(cleanGem, 1, 1));
-	                OreDictionary.registerOre("gemGreen", new ItemStack(cleanGem, 1, 2));
+	                OreDictionary.registerOre("gemFlameoid", new ItemStack(cleanGem, 1, 0));
+	                OreDictionary.registerOre("gemElectroid", new ItemStack(cleanGem, 1, 1));
+	                OreDictionary.registerOre("gemNaturoid", new ItemStack(cleanGem, 1, 2));
 	                OreDictionary.registerOre("gemAscended", ascendedGem);
 	                OreDictionary.registerOre("bucketElectricOoze", bucketliquidElectricOoze);
 	        }
@@ -198,23 +200,24 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                GameRegistry.addRecipe(new ShapedOreRecipe(GemeratorEmpty, true, new Object[]{
 	                		"DRD","BIG","DPD",
 	                		Character.valueOf('D'), "gemDiamond",
-	                		Character.valueOf('R'), "gemRed",
-	                		Character.valueOf('B'), "gemBlue",
-	                		Character.valueOf('G'), "gemGreen",
+	                		Character.valueOf('R'), "gemFlameoid",
+	                		Character.valueOf('B'), "gemElectroid",
+	                		Character.valueOf('G'), "gemNaturoid",
 	                		Character.valueOf('P'), Blocks.piston,
 	                		Character.valueOf('I'), "blockIron"
 	                		}));
 	                
 	                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(gemcompoundItem, 1), new Object[] { 
-	                	"gemRed", 
-	                	"gemBlue", 
-	                	"gemGreen"
+	                	"gemFlameoid", 
+	                	"gemElectroid", 
+	                	"gemNaturoid"
 	                	}));
 	                
-	                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(bucketliquidElectricOoze, 1), new Object[] { 
-	                	"gemAscended",
-	                	Items.water_bucket.setContainerItem(null)
-	                	}));
+	                GameRegistry.addRecipe(new ShapedOreRecipe(bucketliquidElectricOoze, true, new Object[]{
+	                		"EEE","EBE","EEE",
+	                		Character.valueOf('B'), Items.water_bucket.setContainerItem(null),
+	                		Character.valueOf('E'), "gemElectroid",
+	                		}));
 	                
 	               GameRegistry.addSmelting(gemcompoundItem, new ItemStack(ascendedGem), 3.0f);
 	        }
