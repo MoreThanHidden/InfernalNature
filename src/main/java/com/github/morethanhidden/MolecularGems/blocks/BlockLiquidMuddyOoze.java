@@ -21,17 +21,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
-public class BlockLiquidElectricOoze extends BlockFluidClassic{
+public class BlockLiquidMuddyOoze extends BlockFluidClassic{
 
         @SideOnly(Side.CLIENT)
         protected IIcon stillIcon;
         @SideOnly(Side.CLIENT)
         protected IIcon flowingIcon;
         
-        public BlockLiquidElectricOoze(Fluid fluid, Material material) {
+        public BlockLiquidMuddyOoze(Fluid fluid, Material material) {
                 super(fluid, material);
                 setCreativeTab(MainRegistry.tabmoleculargems);
-                setLightLevel(0.625F);
         }
         
         @Override
@@ -42,8 +41,8 @@ public class BlockLiquidElectricOoze extends BlockFluidClassic{
         @SideOnly(Side.CLIENT)
         @Override
         public void registerBlockIcons(IIconRegister register) {
-                stillIcon = register.registerIcon("moleculargems:fluidElectricStill");
-                flowingIcon = register.registerIcon("moleculargems:fluidElectricFlowing");
+                stillIcon = register.registerIcon("moleculargems:fluidMuddyStill");
+                flowingIcon = register.registerIcon("moleculargems:fluidMuddyFlowing");
         }
         
         @Override

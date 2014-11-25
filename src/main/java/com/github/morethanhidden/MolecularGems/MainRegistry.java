@@ -2,12 +2,16 @@ package com.github.morethanhidden.MolecularGems;
 
 	import com.github.morethanhidden.MolecularGems.Client.ClientProxy;
 import com.github.morethanhidden.MolecularGems.blocks.BlockLiquidElectricOoze;
+import com.github.morethanhidden.MolecularGems.blocks.BlockLiquidFlamingOoze;
+import com.github.morethanhidden.MolecularGems.blocks.BlockLiquidMuddyOoze;
 import com.github.morethanhidden.MolecularGems.blocks.GemOre;
 import com.github.morethanhidden.MolecularGems.blocks.Gemerator;
 import com.github.morethanhidden.MolecularGems.blocks.GemeratorEmpty;
 import com.github.morethanhidden.MolecularGems.handler.BucketHandler;
 import com.github.morethanhidden.MolecularGems.handler.GemOnMineEvent;
 import com.github.morethanhidden.MolecularGems.items.AscendedGem;
+import com.github.morethanhidden.MolecularGems.items.BucketLiquidFlamingOoze;
+import com.github.morethanhidden.MolecularGems.items.BucketLiquidMuddyOoze;
 import com.github.morethanhidden.MolecularGems.items.CleanGem;
 import com.github.morethanhidden.MolecularGems.items.BucketLiquidElectricOoze;
 import com.github.morethanhidden.MolecularGems.items.GemCompoundItem;
@@ -64,8 +68,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 			public static Block Gemerator;
 			public static Block GemeratorEmpty;
 			public static Block blockElectricOooze;
-			public static Fluid liquidElectricOoze = new Fluid("liquideuze");
+			public static Fluid liquidElectricOoze = new Fluid("liquidelectricooze");
 			public static Item bucketliquidElectricOoze;
+			public static Block blockMuddyOooze;
+			public static Fluid liquidMuddyOoze = new Fluid("liquidmuddyooze");
+			public static Item bucketliquidMuddyOoze;
+			public static Block blockFlamingOooze;
+			public static Fluid liquidFlamingOoze = new Fluid("liquidflamingooze");
+			public static Item bucketliquidFlamingOoze;
 			public static Achievement electrifying;
 			public static Achievement minegem;
 			
@@ -102,12 +112,28 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        	
 	        	
 	        	FluidRegistry.registerFluid(liquidElectricOoze);
-	        	blockElectricOooze = new BlockLiquidElectricOoze(liquidElectricOoze, Material.water).setBlockName("liquidEUze");
+	        	blockElectricOooze = new BlockLiquidElectricOoze(liquidElectricOoze, Material.water).setBlockName("liquidelectricooze");
 	        	GameRegistry.registerBlock(blockElectricOooze, "moleculargems" + "_" + blockElectricOooze.getUnlocalizedName().substring(5));
 	        	liquidElectricOoze.setUnlocalizedName(blockElectricOooze.getUnlocalizedName());
 	        	
+	        	FluidRegistry.registerFluid(liquidMuddyOoze);
+	        	blockMuddyOooze = new BlockLiquidMuddyOoze(liquidMuddyOoze, Material.water).setBlockName("liquidmuddyooze");
+	        	GameRegistry.registerBlock(blockMuddyOooze, "moleculargems" + "_" + blockMuddyOooze.getUnlocalizedName().substring(5));
+	        	liquidMuddyOoze.setUnlocalizedName(blockMuddyOooze.getUnlocalizedName());
+	        	
+	        	FluidRegistry.registerFluid(liquidFlamingOoze);
+	        	blockFlamingOooze = new BlockLiquidFlamingOoze(liquidFlamingOoze, Material.water).setBlockName("liquidflamingooze");
+	        	GameRegistry.registerBlock(blockFlamingOooze, "moleculargems" + "_" + blockFlamingOooze.getUnlocalizedName().substring(5));
+	        	liquidFlamingOoze.setUnlocalizedName(blockFlamingOooze.getUnlocalizedName());
+	        	
 	        	bucketliquidElectricOoze = new BucketLiquidElectricOoze(blockElectricOooze);
-	        	FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquideuze", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketliquidElectricOoze), new ItemStack(Items.bucket));
+	        	FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidelectricooze", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketliquidElectricOoze), new ItemStack(Items.bucket));
+	        	
+	        	bucketliquidMuddyOoze = new BucketLiquidMuddyOoze(blockMuddyOooze);
+	        	FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidmuddyooze", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketliquidMuddyOoze), new ItemStack(Items.bucket));
+	        	
+	        	bucketliquidFlamingOoze = new BucketLiquidFlamingOoze(blockFlamingOooze);
+	        	FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidflamingooze", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketliquidFlamingOoze), new ItemStack(Items.bucket));
 	        	
 	        	cleanGem = new CleanGem().setUnlocalizedName("CleanGem");
 	        	gemcompoundItem = new GemCompoundItem();
@@ -125,6 +151,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 	            GameRegistry.registerWorldGenerator(new WorldGenMoleculer(), 1);
 	            
 	            GameRegistry.registerItem(bucketliquidElectricOoze, bucketliquidElectricOoze.getUnlocalizedName());
+	            GameRegistry.registerItem(bucketliquidMuddyOoze, bucketliquidMuddyOoze.getUnlocalizedName());
+	            GameRegistry.registerItem(bucketliquidFlamingOoze, bucketliquidFlamingOoze.getUnlocalizedName());
 	            
 	            GameRegistry.registerTileEntity(TileGemerator.class, "TileGemerator");
 	            

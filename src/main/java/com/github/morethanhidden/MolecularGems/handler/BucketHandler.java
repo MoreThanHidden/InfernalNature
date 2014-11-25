@@ -32,6 +32,17 @@ public class BucketHandler {
 					&& world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0) {
 				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
 				return new ItemStack(MainRegistry.bucketliquidElectricOoze);
+				
+			} else if ((block == MainRegistry.blockMuddyOooze)
+					&& world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0) {
+				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
+				return new ItemStack(MainRegistry.bucketliquidMuddyOoze);
+				
+			} else if ((block == MainRegistry.blockFlamingOooze)
+					&& world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0) {
+				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
+				return new ItemStack(MainRegistry.bucketliquidFlamingOoze);
+				
 			} else
 				return null;
 		}
