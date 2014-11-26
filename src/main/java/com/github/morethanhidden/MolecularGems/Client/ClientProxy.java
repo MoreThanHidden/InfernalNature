@@ -22,9 +22,6 @@ public class ClientProxy extends common {
 	@Override
 		public void registerRenderers() {
 		
-            // Set Liquid Icons
-		MainRegistry.liquidElectricOoze.setIcons(MainRegistry.blockElectricOooze.getIcon(0, 0), MainRegistry.blockElectricOooze.getIcon(1, 0));
-		
         GemOreRenderType = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(new RenderGemOre());
         

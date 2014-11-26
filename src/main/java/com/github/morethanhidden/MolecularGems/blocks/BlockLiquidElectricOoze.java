@@ -44,6 +44,8 @@ public class BlockLiquidElectricOoze extends BlockFluidClassic{
         public void registerBlockIcons(IIconRegister register) {
                 stillIcon = register.registerIcon("moleculargems:fluidElectricStill");
                 flowingIcon = register.registerIcon("moleculargems:fluidElectricFlowing");
+                MainRegistry.liquidElectricOoze.setIcons(stillIcon, flowingIcon);
+                
         }
         
         @Override

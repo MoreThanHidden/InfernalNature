@@ -122,7 +122,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        	liquidMuddyOoze.setUnlocalizedName(blockMuddyOooze.getUnlocalizedName());
 	        	
 	        	FluidRegistry.registerFluid(liquidFlamingOoze);
-	        	blockFlamingOooze = new BlockLiquidFlamingOoze(liquidFlamingOoze, Material.water).setBlockName("liquidflamingooze");
+	        	blockFlamingOooze = new BlockLiquidFlamingOoze(liquidFlamingOoze, Material.lava).setBlockName("liquidflamingooze");
 	        	GameRegistry.registerBlock(blockFlamingOooze, "moleculargems" + "_" + blockFlamingOooze.getUnlocalizedName().substring(5));
 	        	liquidFlamingOoze.setUnlocalizedName(blockFlamingOooze.getUnlocalizedName());
 	        	
@@ -183,7 +183,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        @EventHandler // used in 1.6.2
 	        //@Init       // used in 1.5.2
 	        public void load(FMLInitializationEvent event) {
-	        	proxy.registerRenderers();
+	        	
+      	       	proxy.registerRenderers();
 	        	addNames();
 	            oreRegistration();
 	            addOreRecipes();
@@ -197,6 +198,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                LanguageRegistry.addName(Gemerator, "Gemerator");
 	                LanguageRegistry.addName(bucketliquidElectricOoze, "Electric Ooze Bucket");
 	                LanguageRegistry.addName(blockElectricOooze, "Electric Ooze");
+	                LanguageRegistry.addName(bucketliquidMuddyOoze, "Muddy Ooze Bucket");
+	                LanguageRegistry.addName(blockMuddyOooze, "Muddy Ooze");
+	                LanguageRegistry.addName(blockFlamingOooze, "Flaming Ooze");
+	                LanguageRegistry.addName(bucketliquidFlamingOoze, "Flaming Ooze Bucket");
 	                LanguageRegistry.addName(gemcompoundItem, "Ascended Gem Compound");
 	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 0), "Flameoid Gem");
 	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 1), "Electroid Gem");
@@ -221,6 +226,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                OreDictionary.registerOre("gemNaturoid", new ItemStack(cleanGem, 1, 2));
 	                OreDictionary.registerOre("gemAscended", ascendedGem);
 	                OreDictionary.registerOre("bucketElectricOoze", bucketliquidElectricOoze);
+	                OreDictionary.registerOre("bucketMuddyOoze", bucketliquidMuddyOoze);
+	                OreDictionary.registerOre("bucketFlamingOoze", bucketliquidFlamingOoze);
 	        }
 	        public static void addOreRecipes()
 	        {
@@ -246,6 +253,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                		Character.valueOf('B'), Items.water_bucket.setContainerItem(null),
 	                		Character.valueOf('E'), "gemElectroid",
 	                		}));
+	                GameRegistry.addRecipe(new ShapedOreRecipe(bucketliquidFlamingOoze, true, new Object[]{
+	                		"EEE","EBE","EEE",
+	                		Character.valueOf('B'), Items.water_bucket.setContainerItem(null),
+	                		Character.valueOf('E'), "gemFlameoid",
+	                		}));
+	                GameRegistry.addRecipe(new ShapedOreRecipe(bucketliquidMuddyOoze, true, new Object[]{
+	                		"EEE","EBE","EEE",
+	                		Character.valueOf('B'), Items.water_bucket.setContainerItem(null),
+	                		Character.valueOf('E'), "gemNaturoid",
+	                		}));
 	                
 	               GameRegistry.addSmelting(gemcompoundItem, new ItemStack(ascendedGem), 3.0f);
 	        }
@@ -254,6 +271,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        //@PostInit   // used in 1.5.2
 	        public void postInit(FMLPostInitializationEvent event) {
 	                // Stub Method
+	        	
 	        }
 	        
 	}
