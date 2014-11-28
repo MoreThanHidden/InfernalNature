@@ -23,12 +23,12 @@ public class WorldGenMoleculer implements  IWorldGenerator{
 	}
 
 	private void generateSurface(World world, Random rand, int chunkX, int chunkZ) {
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < MainRegistry.config_gemrate; i++){
 			int randPosX = chunkX + rand.nextInt(16);
-			int randPosY = rand.nextInt(16);
+			int randPosY = rand.nextInt(10);
 			int randPosZ = chunkZ + rand.nextInt(16);
 			
-			(new WorldGenMinable(MainRegistry.gemOre, 5)).generate(world, rand, randPosX, randPosY, randPosZ);
+			(new WorldGenMinable(MainRegistry.gemOre, 1)).generate(world, rand, randPosX, randPosY, randPosZ);
 		}
 		}
 		

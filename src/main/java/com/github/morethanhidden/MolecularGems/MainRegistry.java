@@ -1,6 +1,7 @@
 package com.github.morethanhidden.MolecularGems;
 
 	import com.github.morethanhidden.MolecularGems.Client.ClientProxy;
+import com.github.morethanhidden.MolecularGems.blocks.BlockLiquidAquoticOoze;
 import com.github.morethanhidden.MolecularGems.blocks.BlockLiquidElectricOoze;
 import com.github.morethanhidden.MolecularGems.blocks.BlockLiquidFlamingOoze;
 import com.github.morethanhidden.MolecularGems.blocks.BlockLiquidMuddyOoze;
@@ -8,8 +9,10 @@ import com.github.morethanhidden.MolecularGems.blocks.GemOre;
 import com.github.morethanhidden.MolecularGems.blocks.Gemerator;
 import com.github.morethanhidden.MolecularGems.blocks.GemeratorEmpty;
 import com.github.morethanhidden.MolecularGems.handler.BucketHandler;
+import com.github.morethanhidden.MolecularGems.handler.CraftingHandler;
 import com.github.morethanhidden.MolecularGems.handler.GemOnMineEvent;
 import com.github.morethanhidden.MolecularGems.items.AscendedGem;
+import com.github.morethanhidden.MolecularGems.items.BucketLiquidAquoticOoze;
 import com.github.morethanhidden.MolecularGems.items.BucketLiquidFlamingOoze;
 import com.github.morethanhidden.MolecularGems.items.BucketLiquidMuddyOoze;
 import com.github.morethanhidden.MolecularGems.items.CleanGem;
@@ -56,7 +59,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-	@Mod(modid="moleculargems", name="Molecular Gems", version="0.0.1")
+	@Mod(modid="moleculargems", name="Molecular Gems", version="0.0.3")
 	//@NetworkMod(clientSideRequired=true) // not used in 1.7
 	public class MainRegistry {
 			//Items I have Added
@@ -75,12 +78,19 @@ import cpw.mods.fml.relauncher.SideOnly;
 			public static Item bucketliquidMuddyOoze;
 			public static Block blockFlamingOooze;
 			public static Fluid liquidFlamingOoze = new Fluid("liquidflamingooze");
+			public static Item bucketliquidAquoticOoze;
+			public static Block blockAquoticOooze;
+			public static Fluid liquidAquoticOoze = new Fluid("liquidaquoticooze");
 			public static Item bucketliquidFlamingOoze;
 			public static Achievement electrifying;
 			public static Achievement minegem;
+			public static Achievement stickyooze;
+			public static Achievement agemerator;
 			
 			public static int gemeratorEnergyAmt = 1000000;
+			public static int config_gemrate = 7;
 			public static boolean ShockingLiquid = true;
+			
 			
 	        // The instance of your mod that Forge uses.
 	        @Instance(value = "moleculargems")
@@ -116,6 +126,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        	GameRegistry.registerBlock(blockElectricOooze, "moleculargems" + "_" + blockElectricOooze.getUnlocalizedName().substring(5));
 	        	liquidElectricOoze.setUnlocalizedName(blockElectricOooze.getUnlocalizedName());
 	        	
+	        	FluidRegistry.registerFluid(liquidAquoticOoze);
+	        	blockAquoticOooze = new BlockLiquidAquoticOoze(liquidAquoticOoze, Material.water).setBlockName("liquidaquoticoze");
+	        	GameRegistry.registerBlock(blockAquoticOooze, "moleculargems" + "_" + blockAquoticOooze.getUnlocalizedName().substring(5));
+	        	liquidAquoticOoze.setUnlocalizedName(blockAquoticOooze.getUnlocalizedName());
+	        	
 	        	FluidRegistry.registerFluid(liquidMuddyOoze);
 	        	blockMuddyOooze = new BlockLiquidMuddyOoze(liquidMuddyOoze, Material.water).setBlockName("liquidmuddyooze");
 	        	GameRegistry.registerBlock(blockMuddyOooze, "moleculargems" + "_" + blockMuddyOooze.getUnlocalizedName().substring(5));
@@ -128,6 +143,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        	
 	        	bucketliquidElectricOoze = new BucketLiquidElectricOoze(blockElectricOooze);
 	        	FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidelectricooze", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketliquidElectricOoze), new ItemStack(Items.bucket));
+	        	
+	        	bucketliquidAquoticOoze = new BucketLiquidAquoticOoze(blockAquoticOooze);
+	        	FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidaquoticooze", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketliquidAquoticOoze), new ItemStack(Items.bucket));
 	        	
 	        	bucketliquidMuddyOoze = new BucketLiquidMuddyOoze(blockMuddyOooze);
 	        	FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidmuddyooze", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketliquidMuddyOoze), new ItemStack(Items.bucket));
@@ -151,30 +169,33 @@ import cpw.mods.fml.relauncher.SideOnly;
 	            GameRegistry.registerWorldGenerator(new WorldGenMoleculer(), 1);
 	            
 	            GameRegistry.registerItem(bucketliquidElectricOoze, bucketliquidElectricOoze.getUnlocalizedName());
+	            GameRegistry.registerItem(bucketliquidAquoticOoze, bucketliquidAquoticOoze.getUnlocalizedName());
 	            GameRegistry.registerItem(bucketliquidMuddyOoze, bucketliquidMuddyOoze.getUnlocalizedName());
 	            GameRegistry.registerItem(bucketliquidFlamingOoze, bucketliquidFlamingOoze.getUnlocalizedName());
 	            
 	            GameRegistry.registerTileEntity(TileGemerator.class, "TileGemerator");
-	            
+	            	            
 	            MinecraftForge.EVENT_BUS.register(new BucketHandler());
+	            FMLCommonHandler.instance().bus().register(new CraftingHandler());
 	            FMLCommonHandler.instance().bus().register(new GemOnMineEvent());
 	            		
 	        	Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-
-	        	minegem = new Achievement("achievement.minegem", "minegem", 0, 0, gemOre, (Achievement)null).initIndependentStat().registerStat();
 	        	
+	        	minegem = new Achievement("achievement.minegem", "minegem", 0, 0, gemOre, (Achievement)null).initIndependentStat().registerStat();
+	        	stickyooze  = new Achievement("achievement.stickyooze", "stickyooze", 2, 1, bucketliquidMuddyOoze, minegem).registerStat();
+	        	agemerator  = new Achievement("achievement.agemerator", "agemerator", 2, 2, Gemerator, minegem).registerStat();
 	        	if (ShockingLiquid = true){
-	        	electrifying = new Achievement("achievement.electrifying", "electrifying", 2, 1, bucketliquidElectricOoze, minegem).registerStat();
+	        	electrifying = new Achievement("achievement.electrifying", "electrifying", 2, 3, bucketliquidElectricOoze, minegem).registerStat();
 	        	}
 	        	
-	        	AchievementPage.registerAchievementPage(new AchievementPage("Molecular Gems", new Achievement[]{minegem, electrifying}));
+	        	AchievementPage.registerAchievementPage(new AchievementPage("Molecular Gems", new Achievement[]{minegem, electrifying, stickyooze, agemerator}));
 	        	
 	        	config.load();
 
 	        	// Configuration goes here.
 	        	gemeratorEnergyAmt = config.get(config.CATEGORY_GENERAL, "Gemerator Energy Amount", 1000000).getInt();
 	        	ShockingLiquid = config.get(config.CATEGORY_GENERAL, "Lightning in ElectricOoze", true).getBoolean();
-	        	
+	        	config_gemrate = config.get(config.CATEGORY_GENERAL, "Spawn Rate of Gem Ores", 7).getInt();
 	        	
 	        	config.save();
 	            
@@ -197,15 +218,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                LanguageRegistry.addName(GemeratorEmpty, "Empty Gemerator");
 	                LanguageRegistry.addName(Gemerator, "Gemerator");
 	                LanguageRegistry.addName(bucketliquidElectricOoze, "Electric Ooze Bucket");
+	                LanguageRegistry.addName(blockElectricOooze, "Aquotic Ooze");
+	                LanguageRegistry.addName(bucketliquidAquoticOoze, "Aquotic Ooze Bucket");
 	                LanguageRegistry.addName(blockElectricOooze, "Electric Ooze");
 	                LanguageRegistry.addName(bucketliquidMuddyOoze, "Muddy Ooze Bucket");
 	                LanguageRegistry.addName(blockMuddyOooze, "Muddy Ooze");
 	                LanguageRegistry.addName(blockFlamingOooze, "Flaming Ooze");
 	                LanguageRegistry.addName(bucketliquidFlamingOoze, "Flaming Ooze Bucket");
 	                LanguageRegistry.addName(gemcompoundItem, "Ascended Gem Compound");
-	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 0), "Flameoid Gem");
-	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 1), "Electroid Gem");
-	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 2), "Naturoid Gem");
+	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 0), "Red Gem");
+	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 1), "Blue Gem");
+	                LanguageRegistry.addName(new ItemStack(cleanGem, 1, 2), "Green Gem");
 	                
 	                LanguageRegistry.instance().addStringLocalization("achievement.minegem", "en_US", "Oooh Shiny!");
 	                LanguageRegistry.instance().addStringLocalization("achievement.electrifying", "en_US", "A Electrifying Experience!");
@@ -213,6 +236,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                LanguageRegistry.instance().addStringLocalization("achievement.electrifying.desc", "en_US", "Step into some Electric Ooze");
 	                LanguageRegistry.instance().addStringLocalization("itemGroup.Molecular Gems", "en_US", "Molecular Gems");
 	                LanguageRegistry.instance().addStringLocalization("entity.Ghost of Ancients.name", "Ghost of the Ancients");
+	                LanguageRegistry.instance().addStringLocalization("achievement.stickyooze", "en_US", "Thats Sticky! (for now)");
+	                LanguageRegistry.instance().addStringLocalization("achievement.stickyooze.desc", "en_US", "Craft a bucket of Ooze");
+	                LanguageRegistry.instance().addStringLocalization("achievement.agemerator", "en_US", "Hmm, a Power Creation Device");
+	                LanguageRegistry.instance().addStringLocalization("achievement.agemerator.desc", "en_US", "Craft a Gemerator");
 	        
 	        }
 	        
@@ -221,9 +248,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                //1.3.2 OreDictionary.registerOre("ingotCopper", new ItemStack(ingotCopper));
 	                //1.6.4
 	                OreDictionary.registerOre("oreGem", gemOre);
-	                OreDictionary.registerOre("gemFlameoid", new ItemStack(cleanGem, 1, 0));
-	                OreDictionary.registerOre("gemElectroid", new ItemStack(cleanGem, 1, 1));
-	                OreDictionary.registerOre("gemNaturoid", new ItemStack(cleanGem, 1, 2));
+	                OreDictionary.registerOre("gemRed", new ItemStack(cleanGem, 1, 0));
+	                OreDictionary.registerOre("gemBlue", new ItemStack(cleanGem, 1, 1));
+	                OreDictionary.registerOre("gemGreen", new ItemStack(cleanGem, 1, 2));
 	                OreDictionary.registerOre("gemAscended", ascendedGem);
 	                OreDictionary.registerOre("bucketElectricOoze", bucketliquidElectricOoze);
 	                OreDictionary.registerOre("bucketMuddyOoze", bucketliquidMuddyOoze);
@@ -235,33 +262,38 @@ import cpw.mods.fml.relauncher.SideOnly;
 	                GameRegistry.addRecipe(new ShapedOreRecipe(GemeratorEmpty, true, new Object[]{
 	                		"DRD","BIG","DPD",
 	                		Character.valueOf('D'), "gemDiamond",
-	                		Character.valueOf('R'), "gemFlameoid",
-	                		Character.valueOf('B'), "gemElectroid",
-	                		Character.valueOf('G'), "gemNaturoid",
+	                		Character.valueOf('R'), "gemRed",
+	                		Character.valueOf('B'), "gemBlue",
+	                		Character.valueOf('G'), "gemGreen",
 	                		Character.valueOf('P'), Blocks.piston,
 	                		Character.valueOf('I'), "blockIron"
 	                		}));
-	                
+	                	                
 	                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(gemcompoundItem, 1), new Object[] { 
-	                	"gemFlameoid", 
-	                	"gemElectroid", 
-	                	"gemNaturoid"
+	                	"gemRed", 
+	                	"gemBlue", 
+	                	"gemGreen"
 	                	}));
 	                
 	                GameRegistry.addRecipe(new ShapedOreRecipe(bucketliquidElectricOoze, true, new Object[]{
 	                		"EEE","EBE","EEE",
 	                		Character.valueOf('B'), Items.water_bucket.setContainerItem(null),
-	                		Character.valueOf('E'), "gemElectroid",
+	                		Character.valueOf('E'), "gemAscended",
 	                		}));
 	                GameRegistry.addRecipe(new ShapedOreRecipe(bucketliquidFlamingOoze, true, new Object[]{
 	                		"EEE","EBE","EEE",
 	                		Character.valueOf('B'), Items.water_bucket.setContainerItem(null),
-	                		Character.valueOf('E'), "gemFlameoid",
+	                		Character.valueOf('E'), "gemRed",
 	                		}));
 	                GameRegistry.addRecipe(new ShapedOreRecipe(bucketliquidMuddyOoze, true, new Object[]{
 	                		"EEE","EBE","EEE",
 	                		Character.valueOf('B'), Items.water_bucket.setContainerItem(null),
-	                		Character.valueOf('E'), "gemNaturoid",
+	                		Character.valueOf('E'), "gemGreen",
+	                		}));
+	                GameRegistry.addRecipe(new ShapedOreRecipe(bucketliquidAquoticOoze, true, new Object[]{
+	                		"EEE","EBE","EEE",
+	                		Character.valueOf('B'), Items.water_bucket.setContainerItem(null),
+	                		Character.valueOf('E'), "gemBlue",
 	                		}));
 	                
 	               GameRegistry.addSmelting(gemcompoundItem, new ItemStack(ascendedGem), 3.0f);

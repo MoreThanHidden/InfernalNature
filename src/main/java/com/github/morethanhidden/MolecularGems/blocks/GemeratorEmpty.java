@@ -44,7 +44,6 @@ public class GemeratorEmpty extends Block
 	
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9){
 		if(world.isRemote) return true;
 		if(player.getCurrentEquippedItem() != null) if(player.getCurrentEquippedItem().getItem() == MainRegistry.ascendedGem){
