@@ -6,6 +6,7 @@ import ic2.api.energy.tile.IEnergySource;
 import cofh.api.energy.IEnergyConnection;
 import cofh.api.energy.IEnergyHandler;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
@@ -21,10 +22,10 @@ import net.minecraftforge.fluids.IFluidHandler;
 import cpw.mods.fml.common.Optional;
 
 
-public class TileGemerator extends TileEntity implements IEnergyConnection, IEnergySource{
+public class TileGemerator extends TileEntity implements IEnergyConnection, IEnergySource, IInventory{
 	
 	    //API Energy Variables
-	    public int energy = 0;
+	    public int energy;
 	    public int maxEnergy = MainRegistry.gemeratorEnergyAmt * 4;
 	    public boolean initialized;
 	    
@@ -200,6 +201,81 @@ public class TileGemerator extends TileEntity implements IEnergyConnection, IEne
 		@Optional.Method(modid = "IC2API")
 		public int getSourceTier() {
 			return 3;
+		}
+
+		@Override
+		public int getSizeInventory() {
+			return 1;
+		}
+
+		@Override
+		public ItemStack getStackInSlot(int slot) {
+			if (slot == 0 && energy == 0 && worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.Gemerator){
+				return new ItemStack (MainRegistry.ascendedGem, 1);}
+			else return null;
+		}
+
+		@Override
+		public ItemStack decrStackSize(int slot, int amount) {
+			if (slot == 0 && energy == 0 && worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.Gemerator){
+				worldObj.setBlock(xCoord, yCoord, zCoord, MainRegistry.GemeratorEmpty, worldObj.getBlockMetadata(xCoord, yCoord, zCoord), 2);
+				return new ItemStack (MainRegistry.ascendedGem, 1);}
+			else return null;
+		}
+
+		@Override
+		public ItemStack getStackInSlotOnClosing(int p_70304_1_) {
+			return null;
+		}
+		
+		@Override
+		public void setInventorySlotContents(int slot, ItemStack itemstack) {
+				worldObj.setBlock(xCoord, yCoord, zCoord, MainRegistry.GemeratorEmpty, worldObj.getBlockMetadata(xCoord, yCoord, zCoord), 2);
+				if (worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.GemeratorEmpty){
+				worldObj.setBlock(xCoord, yCoord, zCoord, MainRegistry.Gemerator, worldObj.getBlockMetadata(xCoord, yCoord, zCoord), 2);
+				
+				int energy = 0;
+				if(itemstack.stackTagCompound != null){
+					energy = itemstack.getTagCompound().getInteger("Energy");}
+				TileGemerator te2 = (TileGemerator) worldObj.getTileEntity(xCoord, yCoord, zCoord);
+				te2.energy = energy;
+				}
+		}
+
+		@Override
+		public String getInventoryName() {
+			return null;
+		}
+
+		@Override
+		public boolean hasCustomInventoryName() {
+			return false;
+		}
+
+		@Override
+		public int getInventoryStackLimit() {
+			return 1;
+		}
+
+		@Override
+		public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
+			return false;
+		}
+
+		@Override
+		public void openInventory() {			
+		}
+
+		@Override
+		public void closeInventory() {
+		}
+
+		@Override
+		public boolean isItemValidForSlot(int slot, ItemStack itemstack) {
+			if (slot == 0 && worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.GemeratorEmpty && itemstack.getItem() == MainRegistry.ascendedGem){
+	
+				return true;
+			}else return false;
 		}
 
 	}

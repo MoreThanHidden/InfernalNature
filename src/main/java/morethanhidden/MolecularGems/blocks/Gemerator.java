@@ -18,6 +18,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -33,53 +35,71 @@ public class Gemerator extends BlockContainer
 {
     @SideOnly(Side.CLIENT)
     private IIcon texture_front;
+    private IIcon texture_front_e;
     private int direction;
     private ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+    private final boolean GemeratorEmpty;
     
-	public Gemerator()
+	public Gemerator(boolean gemeratorempty)
 	{
 		super(Material.rock);
-		setBlockName("MolecularGenerator");
+		setBlockName("Gemerator");
 		setCreativeTab(MainRegistry.tabmoleculargems);
 		setStepSound(soundTypePiston);
 		setHardness(3.0F);
 		setResistance(5.0F);
 		setHarvestLevel("pickaxe", 2);
+		this.GemeratorEmpty = gemeratorempty;
+		
 	}
-	
-	
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9){
 		
-		if(world.isRemote) return true;
-		
 		TileGemerator te = (TileGemerator) world.getTileEntity(x, y, z);
-		
-		if(te != null){
-			if (player.isSneaking()) {
-					world.setBlock(x, y, z, MainRegistry.GemeratorEmpty, world.getBlockMetadata(x, y, z), 2);
+		if (this.GemeratorEmpty){
+			if(player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == MainRegistry.ascendedGem){
+				
+				int energy = 0;
+				
+				if(player.getCurrentEquippedItem().stackTagCompound != null){
+					energy = player.getCurrentEquippedItem().getTagCompound().getInteger("Energy");
+					}
+				player.inventory.consumeInventoryItem(player.getCurrentEquippedItem().getItem());
+				
+				world.setBlock(x, y, z, MainRegistry.Gemerator, world.getBlockMetadata(x, y, z), 2);
+				TileGemerator te2 = (TileGemerator) world.getTileEntity(x, y, z);
+				
+				te2.energy = energy;
+				
+				
+			return true;}
+			if (!world.isRemote) {
+			player.addChatComponentMessage(new ChatComponentTranslation("Insert a Ascended Gem to use"));
+			}return true;
+			
+		}else if (player.isSneaking() && !world.isRemote) {
+				world.setBlock(x, y, z, MainRegistry.GemeratorEmpty, world.getBlockMetadata(x, y, z), 2);
 					ItemStack itemstack = new ItemStack(MainRegistry.ascendedGem,1);
 					if(itemstack.stackTagCompound == null) itemstack.setTagCompound(new NBTTagCompound());
 					itemstack.stackTagCompound.setInteger("Energy", te.energy);
 					world.spawnEntityInWorld(new EntityItem(world, player.posX, player.posY, player.posZ, itemstack));
 			
-			}else{ 
-					int amnt = te.energy;
-					int length = String.valueOf(amnt).length();
-					int lengtheu = String.valueOf(amnt / 4).length();
+			}else if (!world.isRemote){ 
+					int length = String.valueOf(te.energy).length();
+					int lengtheu = String.valueOf(te.energy / 4).length();
 					player.addChatComponentMessage(new ChatComponentTranslation(("Stored:")));
 					if (length >= 7 && lengtheu >= 7){
-						player.addChatComponentMessage(new ChatComponentTranslation(amnt / 4 / 1000000 + "M EU or " + amnt / 1000000 + "M RF"));
+						player.addChatComponentMessage(new ChatComponentTranslation(te.energy / 4 / 1000000 + "M EU or " + te.energy / 1000000 + "M RF"));
 					}else if (length >= 7 && lengtheu < 7){  
-						player.addChatComponentMessage(new ChatComponentTranslation(amnt / 4 / 1000 + "K EU or " + (double) (amnt / 10000) / 100 + "M RF"));
+						player.addChatComponentMessage(new ChatComponentTranslation(te.energy / 4 / 1000 + "K EU or " + (double) (te.energy / 10000) / 100 + "M RF"));
 					}else if (length < 4){  
-						player.addChatComponentMessage(new ChatComponentTranslation(amnt / 4 + " EU or " + amnt + " RF"));
+						player.addChatComponentMessage(new ChatComponentTranslation(te.energy / 4 + " EU or " + te.energy + " RF"));
 					}else if (length < 7){  
-						player.addChatComponentMessage(new ChatComponentTranslation(amnt / 4 / 1000 + "K EU or " + amnt / 1000 + "K RF"));
+						player.addChatComponentMessage(new ChatComponentTranslation(te.energy / 4 / 1000 + "K EU or " + te.energy / 1000 + "K RF"));
 					}
 			
-			}}
+			}
 		
 		return true;
 		
@@ -134,9 +154,10 @@ public class Gemerator extends BlockContainer
     public void registerBlockIcons(IIconRegister iconreg)
     {
         this.blockIcon = iconreg.registerIcon("moleculargems:Casing");
-        this.texture_front = iconreg.registerIcon("moleculargems:Gemerator");
+        this.texture_front = iconreg.registerIcon(this.GemeratorEmpty ? "moleculargems:GemeratorEmpty" : "moleculargems:Gemerator");
     }
-	
+    
+    
     @Override
     	@Optional.Method(modid = "CoFHAPI")
     	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ) {
@@ -154,20 +175,41 @@ public class Gemerator extends BlockContainer
 	public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z, boolean willHarvest) {
 		
 		final TileGemerator te = (TileGemerator) world.getTileEntity(x, y, z);
-		
+		if (!GemeratorEmpty){
 		ItemStack itemstack = new ItemStack(MainRegistry.ascendedGem,1);
 		if(itemstack.stackTagCompound == null) itemstack.setTagCompound(new NBTTagCompound());
 		itemstack.stackTagCompound.setInteger("Energy", te.energy);
 		
 		ret.add(itemstack);
-		
+		}
 		return super.removedByPlayer(world, player, x, y, z, willHarvest);
 	}
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		ret.add(new ItemStack (MainRegistry.GemeratorEmpty));
+		ret.add(new ItemStack (MainRegistry.GemeratorEmpty, 1));
 		return ret;
 	}
+	
+    /**
+     * If this returns true, then comparators facing away from this block will use the value from
+     * getComparatorInputOverride instead of the actual redstone signal strength.
+     */
+	@Override
+    public boolean hasComparatorInputOverride()
+    {
+        return true;
+    }
+
+    /**
+     * If hasComparatorInputOverride returns true, the return value from this is used instead of the redstone signal
+     * strength when this block inputs to a comparator.
+     */
+	@Override
+    public int getComparatorInputOverride(World world, int x, int y, int z, int p_149736_5_)
+    {
+		TileGemerator te = (TileGemerator) world.getTileEntity(x, y, z);
+        return te.energy * 16 / (MainRegistry.gemeratorEnergyAmt * 4);
+    }
 	
 }

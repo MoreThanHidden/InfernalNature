@@ -7,7 +7,6 @@ import morethanhidden.MolecularGems.blocks.BlockLiquidFlamingOoze;
 import morethanhidden.MolecularGems.blocks.BlockLiquidMuddyOoze;
 import morethanhidden.MolecularGems.blocks.GemOre;
 import morethanhidden.MolecularGems.blocks.Gemerator;
-import morethanhidden.MolecularGems.blocks.GemeratorEmpty;
 import morethanhidden.MolecularGems.handler.BucketHandler;
 import morethanhidden.MolecularGems.handler.CraftingHandler;
 import morethanhidden.MolecularGems.handler.GemOnMineEvent;
@@ -59,7 +58,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-	@Mod(modid="moleculargems", name="Molecular Gems", version="0.0.5")
+	@Mod(modid="moleculargems", name="Molecular Gems", version="0.0.6")
 	//@NetworkMod(clientSideRequired=true) // not used in 1.7
 	public class MainRegistry {
 			//Items I have Added
@@ -156,8 +155,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        	cleanGem = new CleanGem().setUnlocalizedName("CleanGem");
 	        	gemcompoundItem = new GemCompoundItem();
 	        	gemOre = new GemOre();
-	        	Gemerator = new Gemerator();
-	        	GemeratorEmpty = new GemeratorEmpty();
+	        	Gemerator = new Gemerator(false);
+	        	GemeratorEmpty = new Gemerator(true);
 	        	ascendedGem = new AscendedGem();
 	        	
 	            GameRegistry.registerItem(cleanGem, cleanGem.getUnlocalizedName());
@@ -215,7 +214,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 	        {
 	                LanguageRegistry.addName(gemOre, "Gem Ore");
 	                LanguageRegistry.addName(ascendedGem, "Ascended Gem");
-	                LanguageRegistry.addName(GemeratorEmpty, "Empty Gemerator");
 	                LanguageRegistry.addName(Gemerator, "Gemerator");
 	                LanguageRegistry.addName(bucketliquidElectricOoze, "Electric Ooze Bucket");
 	                LanguageRegistry.addName(blockElectricOooze, "Aquotic Ooze");

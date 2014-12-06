@@ -3,7 +3,7 @@
   "modid": "moleculargems",
   "name": "Molecular Gems",
   "description": "A mod where magical energy meets mechanical use.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "mcversion": "${mcversion}",
   "url": "https://github.com/MoreThanHidden/MolecularGems",
   "updateUrl": "",
