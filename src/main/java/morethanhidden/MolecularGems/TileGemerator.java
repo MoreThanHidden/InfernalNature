@@ -1,5 +1,8 @@
 package morethanhidden.MolecularGems;
 
+import ic2.api.energy.event.EnergyTileLoadEvent;
+import ic2.api.energy.event.EnergyTileUnloadEvent;
+import ic2.api.energy.tile.IEnergySource;
 import cofh.api.energy.IEnergyConnection;
 import cofh.api.energy.IEnergyHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,12 +21,17 @@ import net.minecraftforge.fluids.IFluidHandler;
 import cpw.mods.fml.common.Optional;
 
 
-public class TileGemerator extends TileEntity implements IEnergyConnection{
+public class TileGemerator extends TileEntity implements IEnergyConnection, IEnergySource{
 	
 	    //API Energy Variables
 	    public int energy = 0;
 	    public int maxEnergy = MainRegistry.gemeratorEnergyAmt * 4;
 	    public boolean initialized;
+	    
+		// IC2-related fields
+		
+		private boolean _isAddedToIC2EnergyNet;
+		private boolean _addToNetOnNextTick;
 	    
 	    @Override
 	    public void writeToNBT(NBTTagCompound data) {
@@ -48,10 +56,15 @@ public class TileGemerator extends TileEntity implements IEnergyConnection{
 			super.validate();
 			deadCache = true;
 			handlerCache = null;
+			
+			if(!_isAddedToIC2EnergyNet)
+			{
+				_addToNetOnNextTick = true;
+			}
+			
 		}
 	    
 	    @Override
-	    @Optional.Method(modid = "CoFHAPI")
 		public void updateEntity()
 		{
 			super.updateEntity();
@@ -59,11 +72,36 @@ public class TileGemerator extends TileEntity implements IEnergyConnection{
 			{
 				if (deadCache) reCache();
 				
-				int pulse = Math.min(energy, 800);
+				int pulse = Math.min(energy, 4000);
 				energy -= pulse;
 				energy += transmitEnergy(pulse);
 				}
+			
+			if(_addToNetOnNextTick)
+			{
+				if(!worldObj.isRemote)
+				{
+					MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+				}
+				_addToNetOnNextTick = false;
+				_isAddedToIC2EnergyNet = true;
 			}
+			
+		}
+	  
+	    @Override
+		public void invalidate()
+		{
+			if(_isAddedToIC2EnergyNet)
+			{
+				if(!worldObj.isRemote)
+				{
+					MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
+				}
+				_isAddedToIC2EnergyNet = false;
+			}
+			super.invalidate();
+		}
 	    
 	    @Optional.Method(modid = "CoFHAPI")
 	    protected final int transmitEnergy(int energy){
@@ -90,7 +128,7 @@ public class TileGemerator extends TileEntity implements IEnergyConnection{
 	    @Optional.Method(modid = "CoFHAPI")
 		private void addCache(TileEntity tile, int side)
 		{
-			if (handlerCache != null)
+	    	if (handlerCache != null)
 				handlerCache[side] = null;
 
 			if (tile instanceof IEnergyHandler)
@@ -133,8 +171,35 @@ public class TileGemerator extends TileEntity implements IEnergyConnection{
 
 	    
 		@Override
+		@Optional.Method(modid = "CoFHAPI")
 		public boolean canConnectEnergy(ForgeDirection from) {
 			return true;
+		}
+
+		@Override
+		@Optional.Method(modid = "IC2API")
+		public boolean emitsEnergyTo(TileEntity receiver,
+				ForgeDirection direction) {
+			return true;
+		}
+
+		@Override
+		@Optional.Method(modid = "IC2API")
+		public double getOfferedEnergy() {
+			return Math.min(energy / 4, 2047);
+		}
+
+		@Override
+		@Optional.Method(modid = "IC2API")
+		public void drawEnergy(double amount) {
+			energy = energy - (int) (amount * 4);
+			
+		}
+
+		@Override
+		@Optional.Method(modid = "IC2API")
+		public int getSourceTier() {
+			return 3;
 		}
 
 	}

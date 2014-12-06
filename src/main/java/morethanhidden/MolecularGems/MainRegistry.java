@@ -59,7 +59,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-	@Mod(modid="moleculargems", name="Molecular Gems", version="0.0.4")
+	@Mod(modid="moleculargems", name="Molecular Gems", version="0.0.5")
 	//@NetworkMod(clientSideRequired=true) // not used in 1.7
 	public class MainRegistry {
 			//Items I have Added
