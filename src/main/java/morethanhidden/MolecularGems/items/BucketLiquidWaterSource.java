@@ -7,14 +7,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 
-public class BucketLiquidMuddyOoze extends ItemBucket {
+public class BucketLiquidWaterSource extends ItemBucket {
 
-	public BucketLiquidMuddyOoze(Block block) {
+	public BucketLiquidWaterSource(Block block) {
 		super(block);
 	        setCreativeTab(MainRegistry.tabmoleculargems);
-	        setUnlocalizedName("BucketLiquidMuddyOoze");
+	        setUnlocalizedName("BucketLiquidWaterSOurce");
 	        setContainerItem(Items.bucket);
-	        setTextureName("moleculargems:bucket_liquidMuddyOoze");
+	        setTextureName("moleculargems:bucket_liquidWaterSource");
 	}
 
 }

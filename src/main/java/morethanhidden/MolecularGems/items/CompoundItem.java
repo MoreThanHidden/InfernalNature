@@ -4,13 +4,13 @@ import morethanhidden.MolecularGems.MainRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class GemCompoundItem extends Item {
+public class CompoundItem extends Item {
 
-	public GemCompoundItem() {
+	public CompoundItem() {
         setMaxStackSize(64);
         setCreativeTab(MainRegistry.tabmoleculargems);
-        setUnlocalizedName("GemCompound");
-        setTextureName("moleculargems:GemCompound");
+        setUnlocalizedName("CompoundMolecularBattery");
+        setTextureName("moleculargems:CompoundMolecularBattery");
 }
 	
 }

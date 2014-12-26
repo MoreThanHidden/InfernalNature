@@ -9,7 +9,7 @@ import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import morethanhidden.MolecularGems.MainRegistry;
-import morethanhidden.MolecularGems.TileGemerator;
+import morethanhidden.MolecularGems.TileMolecularAdaptor;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -31,16 +31,16 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class Gemerator extends BlockContainer
+public class MolecularAdaptor extends BlockContainer
 {
     @SideOnly(Side.CLIENT)
     private IIcon texture_front;
     private IIcon texture_front_e;
     private int direction;
     private ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-    private final boolean GemeratorEmpty;
+    private final boolean molecularAdaptorEmpty;
     
-	public Gemerator(boolean gemeratorempty)
+	public MolecularAdaptor(boolean adaptorempty)
 	{
 		super(Material.rock);
 		setBlockName("Gemerator");
@@ -49,16 +49,16 @@ public class Gemerator extends BlockContainer
 		setHardness(3.0F);
 		setResistance(5.0F);
 		setHarvestLevel("pickaxe", 2);
-		this.GemeratorEmpty = gemeratorempty;
+		this.molecularAdaptorEmpty = adaptorempty;
 		
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9){
 		
-		TileGemerator te = (TileGemerator) world.getTileEntity(x, y, z);
-		if (this.GemeratorEmpty){
-			if(player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == MainRegistry.ascendedGem){
+		TileMolecularAdaptor te = (TileMolecularAdaptor) world.getTileEntity(x, y, z);
+		if (this.molecularAdaptorEmpty){
+			if(player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == MainRegistry.molecularBattery){
 				
 				int energy = 0;
 				
@@ -67,8 +67,8 @@ public class Gemerator extends BlockContainer
 					}
 				player.inventory.consumeInventoryItem(player.getCurrentEquippedItem().getItem());
 				
-				world.setBlock(x, y, z, MainRegistry.Gemerator, world.getBlockMetadata(x, y, z), 2);
-				TileGemerator te2 = (TileGemerator) world.getTileEntity(x, y, z);
+				world.setBlock(x, y, z, MainRegistry.molecularAdaptor, world.getBlockMetadata(x, y, z), 2);
+				TileMolecularAdaptor te2 = (TileMolecularAdaptor) world.getTileEntity(x, y, z);
 				
 				te2.energy = energy;
 				
@@ -79,8 +79,8 @@ public class Gemerator extends BlockContainer
 			}return true;
 			
 		}else if (player.isSneaking() && !world.isRemote) {
-				world.setBlock(x, y, z, MainRegistry.GemeratorEmpty, world.getBlockMetadata(x, y, z), 2);
-					ItemStack itemstack = new ItemStack(MainRegistry.ascendedGem,1);
+				world.setBlock(x, y, z, MainRegistry.molecularAdaptorEmpty, world.getBlockMetadata(x, y, z), 2);
+					ItemStack itemstack = new ItemStack(MainRegistry.molecularBattery,1);
 					if(itemstack.stackTagCompound == null) itemstack.setTagCompound(new NBTTagCompound());
 					itemstack.stackTagCompound.setInteger("Energy", te.energy);
 					world.spawnEntityInWorld(new EntityItem(world, player.posX, player.posY, player.posZ, itemstack));
@@ -154,7 +154,7 @@ public class Gemerator extends BlockContainer
     public void registerBlockIcons(IIconRegister iconreg)
     {
         this.blockIcon = iconreg.registerIcon("moleculargems:Casing");
-        this.texture_front = iconreg.registerIcon(this.GemeratorEmpty ? "moleculargems:GemeratorEmpty" : "moleculargems:Gemerator");
+        this.texture_front = iconreg.registerIcon(this.molecularAdaptorEmpty ? "moleculargems:MolecularAdaptorEmpty" : "moleculargems:MolecularAdaptor");
     }
     
     
@@ -162,21 +162,21 @@ public class Gemerator extends BlockContainer
     	@Optional.Method(modid = "CoFHAPI")
     	public void onNeighborChange(IBlockAccess world, int x, int y, int z, int tileX, int tileY, int tileZ) {
     		TileEntity tile = world.getTileEntity(x, y, z);
-    		if(tile != null && tile instanceof TileGemerator)
-    			((TileGemerator) tile).onNeighborTileChange(tileX, tileY, tileZ);
+    		if(tile != null && tile instanceof TileMolecularAdaptor)
+    			((TileMolecularAdaptor) tile).onNeighborTileChange(tileX, tileY, tileZ);
     	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) {
-		return new TileGemerator();
+		return new TileMolecularAdaptor();
 	}
 	
 	@Override
 	public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z, boolean willHarvest) {
 		
-		final TileGemerator te = (TileGemerator) world.getTileEntity(x, y, z);
-		if (!GemeratorEmpty){
-		ItemStack itemstack = new ItemStack(MainRegistry.ascendedGem,1);
+		final TileMolecularAdaptor te = (TileMolecularAdaptor) world.getTileEntity(x, y, z);
+		if (!molecularAdaptorEmpty){
+		ItemStack itemstack = new ItemStack(MainRegistry.molecularBattery,1);
 		if(itemstack.stackTagCompound == null) itemstack.setTagCompound(new NBTTagCompound());
 		itemstack.stackTagCompound.setInteger("Energy", te.energy);
 		
@@ -187,7 +187,7 @@ public class Gemerator extends BlockContainer
 	
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		ret.add(new ItemStack (MainRegistry.GemeratorEmpty, 1));
+		ret.add(new ItemStack (MainRegistry.molecularAdaptorEmpty, 1));
 		return ret;
 	}
 	
@@ -208,7 +208,7 @@ public class Gemerator extends BlockContainer
 	@Override
     public int getComparatorInputOverride(World world, int x, int y, int z, int p_149736_5_)
     {
-		TileGemerator te = (TileGemerator) world.getTileEntity(x, y, z);
+		TileMolecularAdaptor te = (TileMolecularAdaptor) world.getTileEntity(x, y, z);
         return te.energy * 16 / (MainRegistry.gemeratorEnergyAmt * 4);
     }
 	

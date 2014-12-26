@@ -26,32 +26,32 @@ public class RenderGemOre  implements ISimpleBlockRenderingHandler {
 			    tessellator.startDrawingQuads();
 			    tessellator.setNormal(0.0F,-1F,0.0F);
 			    renderer.renderFaceYNeg(block,0.0D,0.0D,0.0D,Blocks.stone.getBlockTextureFromSide(0));
-			    renderer.renderFaceYNeg(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getBlockTextureFromSide(0));
+			    renderer.renderFaceYNeg(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getIcon(0, metadata));
 			    tessellator.draw();
 			    tessellator.startDrawingQuads();
 			    tessellator.setNormal(0.0F,1.0F,0.0F);
 			    renderer.renderFaceYPos(block,0.0D,0.0D,0.0D,Blocks.stone.getBlockTextureFromSide(1));
-			    renderer.renderFaceYPos(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getBlockTextureFromSide(1));
+			    renderer.renderFaceYPos(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getIcon(1, metadata));
 			    tessellator.draw();
 			    tessellator.startDrawingQuads();
 			    tessellator.setNormal(0.0F,0.0F,-1F);
 			    renderer.renderFaceZNeg(block,0.0D,0.0D,0.0D,Blocks.stone.getBlockTextureFromSide(2));
-			    renderer.renderFaceZNeg(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getBlockTextureFromSide(2));
+			    renderer.renderFaceZNeg(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getIcon(2, metadata));
 			    tessellator.draw();
 			    tessellator.startDrawingQuads();
 			    tessellator.setNormal(0.0F,0.0F,1.0F);
 			    renderer.renderFaceZPos(block,0.0D,0.0D,0.0D,Blocks.stone.getBlockTextureFromSide(3));
-			    renderer.renderFaceZPos(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getBlockTextureFromSide(3));
+			    renderer.renderFaceZPos(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getIcon(3, metadata));
 			    tessellator.draw();
 			    tessellator.startDrawingQuads();
 			    tessellator.setNormal(-1F,0.0F,0.0F);
 			    renderer.renderFaceXNeg(block,0.0D,0.0D,0.0D,Blocks.stone.getBlockTextureFromSide(4));
-			    renderer.renderFaceXNeg(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getBlockTextureFromSide(4));
+			    renderer.renderFaceXNeg(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getIcon(4, metadata));
 			    tessellator.draw();
 			    tessellator.startDrawingQuads();
 			    tessellator.setNormal(1.0F,0.0F,0.0F);
 			    renderer.renderFaceXPos(block,0.0D,0.0D,0.0D,Blocks.stone.getBlockTextureFromSide(5));
-			    renderer.renderFaceXPos(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getBlockTextureFromSide(5));
+			    renderer.renderFaceXPos(block,0.0D,0.0D,0.0D,MainRegistry.gemOre.getIcon(5, metadata));
 			    tessellator.draw();
 			    GL11.glTranslatef(0.5F,0.5F,0.5F);
 			    block.setBlockBounds(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
@@ -73,14 +73,16 @@ public class RenderGemOre  implements ISimpleBlockRenderingHandler {
                 //we are on the alpha render pass, draw the ice around the diamond
         	Tessellator.instance.setBrightness(240);
 		    Tessellator.instance.setColorOpaque(255, 255, 255);
+		    
+		    int metadata = world.getBlockMetadata(x,y,z);
 
 		    // render the overlaying block START
-		    renderer.renderFaceYNeg(block, x, y, z, MainRegistry.gemOre.getBlockTextureFromSide(0));
-		    renderer.renderFaceYPos(block, x, y, z, MainRegistry.gemOre.getBlockTextureFromSide(1));
-		    renderer.renderFaceZNeg(block, x, y, z, MainRegistry.gemOre.getBlockTextureFromSide(2));
-		    renderer.renderFaceZPos(block, x, y, z, MainRegistry.gemOre.getBlockTextureFromSide(3));
-		    renderer.renderFaceXNeg(block, x, y, z, MainRegistry.gemOre.getBlockTextureFromSide(4));
-		    renderer.renderFaceXPos(block, x, y, z, MainRegistry.gemOre.getBlockTextureFromSide(5));
+		    renderer.renderFaceYNeg(block, x, y, z, MainRegistry.gemOre.getIcon(0, metadata));
+		    renderer.renderFaceYPos(block, x, y, z, MainRegistry.gemOre.getIcon(1, metadata));
+		    renderer.renderFaceZNeg(block, x, y, z, MainRegistry.gemOre.getIcon(2, metadata));
+		    renderer.renderFaceZPos(block, x, y, z, MainRegistry.gemOre.getIcon(3, metadata));
+		    renderer.renderFaceXNeg(block, x, y, z, MainRegistry.gemOre.getIcon(4, metadata));
+		    renderer.renderFaceXPos(block, x, y, z, MainRegistry.gemOre.getIcon(5, metadata));
 		    // render the overlaying block END
 
 		    Tessellator.instance.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));

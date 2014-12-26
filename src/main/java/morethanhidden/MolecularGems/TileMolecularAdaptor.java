@@ -22,7 +22,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 import cpw.mods.fml.common.Optional;
 
 
-public class TileGemerator extends TileEntity implements IEnergyConnection, IEnergySource, IInventory{
+public class TileMolecularAdaptor extends TileEntity implements IEnergyConnection, IEnergySource, IInventory{
 	
 	    //API Energy Variables
 	    public int energy;
@@ -210,16 +210,16 @@ public class TileGemerator extends TileEntity implements IEnergyConnection, IEne
 
 		@Override
 		public ItemStack getStackInSlot(int slot) {
-			if (slot == 0 && energy == 0 && worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.Gemerator){
-				return new ItemStack (MainRegistry.ascendedGem, 1);}
+			if (slot == 0 && energy == 0 && worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.molecularAdaptor){
+				return new ItemStack (MainRegistry.molecularBattery, 1);}
 			else return null;
 		}
 
 		@Override
 		public ItemStack decrStackSize(int slot, int amount) {
-			if (slot == 0 && energy == 0 && worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.Gemerator){
-				worldObj.setBlock(xCoord, yCoord, zCoord, MainRegistry.GemeratorEmpty, worldObj.getBlockMetadata(xCoord, yCoord, zCoord), 2);
-				return new ItemStack (MainRegistry.ascendedGem, 1);}
+			if (slot == 0 && energy == 0 && worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.molecularAdaptor){
+				worldObj.setBlock(xCoord, yCoord, zCoord, MainRegistry.molecularAdaptorEmpty, worldObj.getBlockMetadata(xCoord, yCoord, zCoord), 2);
+				return new ItemStack (MainRegistry.molecularBattery, 1);}
 			else return null;
 		}
 
@@ -230,14 +230,14 @@ public class TileGemerator extends TileEntity implements IEnergyConnection, IEne
 		
 		@Override
 		public void setInventorySlotContents(int slot, ItemStack itemstack) {
-				worldObj.setBlock(xCoord, yCoord, zCoord, MainRegistry.GemeratorEmpty, worldObj.getBlockMetadata(xCoord, yCoord, zCoord), 2);
-				if (worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.GemeratorEmpty){
-				worldObj.setBlock(xCoord, yCoord, zCoord, MainRegistry.Gemerator, worldObj.getBlockMetadata(xCoord, yCoord, zCoord), 2);
+				worldObj.setBlock(xCoord, yCoord, zCoord, MainRegistry.molecularAdaptorEmpty, worldObj.getBlockMetadata(xCoord, yCoord, zCoord), 2);
+				if (worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.molecularAdaptorEmpty){
+				worldObj.setBlock(xCoord, yCoord, zCoord, MainRegistry.molecularAdaptor, worldObj.getBlockMetadata(xCoord, yCoord, zCoord), 2);
 				
 				int energy = 0;
 				if(itemstack.stackTagCompound != null){
 					energy = itemstack.getTagCompound().getInteger("Energy");}
-				TileGemerator te2 = (TileGemerator) worldObj.getTileEntity(xCoord, yCoord, zCoord);
+				TileMolecularAdaptor te2 = (TileMolecularAdaptor) worldObj.getTileEntity(xCoord, yCoord, zCoord);
 				te2.energy = energy;
 				}
 		}
@@ -272,7 +272,7 @@ public class TileGemerator extends TileEntity implements IEnergyConnection, IEne
 
 		@Override
 		public boolean isItemValidForSlot(int slot, ItemStack itemstack) {
-			if (slot == 0 && worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.GemeratorEmpty && itemstack.getItem() == MainRegistry.ascendedGem){
+			if (slot == 0 && worldObj.getBlock(xCoord, yCoord, zCoord) == MainRegistry.molecularAdaptorEmpty && itemstack.getItem() == MainRegistry.molecularBattery){
 	
 				return true;
 			}else return false;

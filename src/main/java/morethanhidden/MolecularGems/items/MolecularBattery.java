@@ -14,13 +14,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class AscendedGem extends ItemEnergyContainer {
+public class MolecularBattery extends ItemEnergyContainer {
 
-	public AscendedGem() {
+	public MolecularBattery() {
         setMaxStackSize(1);
         setCreativeTab(MainRegistry.tabmoleculargems);
-        setUnlocalizedName("AscendedGem");
-        setTextureName("moleculargems:AscendedGem");
+        setUnlocalizedName("MolecularBattery");
+        setTextureName("moleculargems:MolecularBattery");
         setMaxReceive(MainRegistry.gemeratorEnergyAmt * 4);
         setCapacity(MainRegistry.gemeratorEnergyAmt * 4);
         setMaxDamage(0);

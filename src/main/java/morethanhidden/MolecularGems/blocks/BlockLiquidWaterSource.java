@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
-public class BlockLiquidFlamingOoze extends BlockFluidClassic{
+public class BlockLiquidWaterSource extends BlockFluidClassic{
 
         @SideOnly(Side.CLIENT)
         protected IIcon stillIcon;
@@ -30,26 +30,11 @@ public class BlockLiquidFlamingOoze extends BlockFluidClassic{
         
         private int tickcount = 0;
         
-        public BlockLiquidFlamingOoze(Fluid fluid, Material material) {
+        public BlockLiquidWaterSource(Fluid fluid, Material material) {
                 super(fluid, material);
                 setCreativeTab(MainRegistry.tabmoleculargems);
         }
-        
-        @Override
-        public IIcon getIcon(int side, int meta) {
-                return (side == 0 || side == 1)? stillIcon : flowingIcon;
-        }
-        
-        @SideOnly(Side.CLIENT)
-        @Override
-        public void registerBlockIcons(IIconRegister register) {
-                stillIcon = register.registerIcon("moleculargems:fluidFlamingStill");
-                flowingIcon = register.registerIcon("moleculargems:fluidFlamingFlowing");
-                MainRegistry.liquidFlamingOoze.setIcons(stillIcon, flowingIcon);
-        }
-        
-        
-        
+       
         @Override
         public void updateTick(World world, int x, int y, int z, Random rand)
         {
@@ -61,7 +46,7 @@ public class BlockLiquidFlamingOoze extends BlockFluidClassic{
             
             if(tickcount >= 5){
             	world.setBlock(x, y, z, Blocks.air);
-                world.setBlock(x, y, z, Blocks.fire);
+                world.setBlock(x, y, z, Blocks.water);
                 return;
     		}else{
             tickcount++;
@@ -99,7 +84,7 @@ public class BlockLiquidFlamingOoze extends BlockFluidClassic{
                     if (expQuanta <= 0)
                     {
                         world.setBlock(x, y, z, Blocks.air);
-                        world.setBlock(x, y, z, Blocks.fire);
+                        world.setBlock(x, y, z, Blocks.water);
                         tickcount = 0;
                     }
                     else
@@ -152,16 +137,24 @@ public class BlockLiquidFlamingOoze extends BlockFluidClassic{
         }
                        
         @Override
-        public void onBlockAdded(World world, int x, int y, int z)
-        {
-            world.scheduleBlockUpdate(x, y, z, this, tickRate);
-            tickcount = 0;
+        public IIcon getIcon(int side, int meta) {
+                return (side == 0 || side == 1)? stillIcon : flowingIcon;
+                
+        }
+        
+        @SideOnly(Side.CLIENT)
+        @Override
+        public void registerBlockIcons(IIconRegister register) {
+                stillIcon = register.registerIcon("moleculargems:fluidLiquidSourceStill");
+                flowingIcon = register.registerIcon("moleculargems:fluidLiquidSourceFlowing");
+                MainRegistry.liquidWaterSource.setIcons(stillIcon, flowingIcon);
         }
         
         @Override
         public boolean canDisplace(IBlockAccess world, int x, int y, int z) {
                 if (world.getBlock(x,  y,  z).getMaterial().isLiquid()) return false;
                 return super.canDisplace(world, x, y, z);
+                
         }
         
         @Override
@@ -170,4 +163,12 @@ public class BlockLiquidFlamingOoze extends BlockFluidClassic{
                 return super.displaceIfPossible(world, x, y, z);
         }
         
-}
+        @Override
+        public void onBlockAdded(World world, int x, int y, int z)
+        {
+            world.scheduleBlockUpdate(x, y, z, this, tickRate);
+            tickcount = 0;
+        }
+        
+
+        }

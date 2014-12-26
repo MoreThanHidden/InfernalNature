@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
-public class BlockLiquidAquoticOoze extends BlockFluidClassic{
+public class BlockLiquidGrass extends BlockFluidClassic{
 
         @SideOnly(Side.CLIENT)
         protected IIcon stillIcon;
@@ -30,11 +30,11 @@ public class BlockLiquidAquoticOoze extends BlockFluidClassic{
         
         private int tickcount = 0;
         
-        public BlockLiquidAquoticOoze(Fluid fluid, Material material) {
+        public BlockLiquidGrass(Fluid fluid, Material material) {
                 super(fluid, material);
                 setCreativeTab(MainRegistry.tabmoleculargems);
         }
-       
+        
         @Override
         public void updateTick(World world, int x, int y, int z, Random rand)
         {
@@ -46,7 +46,7 @@ public class BlockLiquidAquoticOoze extends BlockFluidClassic{
             
             if(tickcount >= 5){
             	world.setBlock(x, y, z, Blocks.air);
-                world.setBlock(x, y, z, Blocks.water);
+                world.setBlock(x, y, z, Blocks.grass);
                 return;
     		}else{
             tickcount++;
@@ -84,7 +84,7 @@ public class BlockLiquidAquoticOoze extends BlockFluidClassic{
                     if (expQuanta <= 0)
                     {
                         world.setBlock(x, y, z, Blocks.air);
-                        world.setBlock(x, y, z, Blocks.water);
+                        world.setBlock(x, y, z, Blocks.grass);
                         tickcount = 0;
                     }
                     else
@@ -145,9 +145,9 @@ public class BlockLiquidAquoticOoze extends BlockFluidClassic{
         @SideOnly(Side.CLIENT)
         @Override
         public void registerBlockIcons(IIconRegister register) {
-                stillIcon = register.registerIcon("moleculargems:fluidAquoticStill");
-                flowingIcon = register.registerIcon("moleculargems:fluidAquoticFlowing");
-                MainRegistry.liquidAquoticOoze.setIcons(stillIcon, flowingIcon);
+                stillIcon = register.registerIcon("moleculargems:fluidGrassStill");
+                flowingIcon = register.registerIcon("moleculargems:fluidGrassFlowing");
+                MainRegistry.liquidGrass.setIcons(stillIcon, flowingIcon);
         }
         
         @Override

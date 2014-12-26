@@ -13,16 +13,17 @@ public class CraftingHandler
 @SubscribeEvent
     public void onCrafting(ItemCraftedEvent event)
     {
-     if (event.crafting.getItem() == MainRegistry.bucketliquidAquoticOoze ) {
+     if (event.crafting.getItem() == MainRegistry.bucketliquidWaterSource ) {
          event.player.addStat(MainRegistry.stickyooze, 1);
+         
         }
-     if (event.crafting.getItem() == MainRegistry.bucketliquidFlamingOoze ) {
+     if (event.crafting.getItem() == MainRegistry.bucketliquidFire ) {
          event.player.addStat(MainRegistry.stickyooze, 1);
      	}
-     if (event.crafting.getItem() == MainRegistry.bucketliquidMuddyOoze ) {
+     if (event.crafting.getItem() == MainRegistry.bucketliquidGrass ) {
          event.player.addStat(MainRegistry.stickyooze, 1);
      	}
-     if (event.crafting.isItemEqual((new ItemStack(MainRegistry.GemeratorEmpty, 1))) ) {
+     if (event.crafting.isItemEqual((new ItemStack(MainRegistry.molecularAdaptorEmpty, 1))) ) {
          event.player.addStat(MainRegistry.agemerator, 1);
      	}
     }

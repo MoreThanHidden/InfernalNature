@@ -7,24 +7,25 @@ import cpw.mods.fml.relauncher.SideOnly;
 import morethanhidden.MolecularGems.MainRegistry;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 
-public class CleanGem extends ItemFood {
-	public static final String[] itemNames = new String[] {"RedGem", "BlueGem", "GreenGem"};
+public class RefinedGem extends Item {
+	public static final String[] itemNames = new String[] {"refinedClinohumite", "refinedSugilite", "refinedJadite"};
 	
 	@SideOnly(Side.CLIENT)
 	private IIcon[] item_icon;
 	
-	public CleanGem() {
-		 super(1, true);
+	public RefinedGem() {
+		 super();
 		setHasSubtypes(true);
 		maxStackSize = 64;
         setCreativeTab(MainRegistry.tabmoleculargems);
-        setPotionEffect(10, 10, 1, 1);
 }
 
 	int itemcount = 3;
@@ -36,7 +37,6 @@ public class CleanGem extends ItemFood {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
 		public void getSubItems(Item par1, CreativeTabs creativeTabs, List list)
 		{
 		         for (int j = 0; j < itemcount; ++j)
@@ -63,8 +63,6 @@ public class CleanGem extends ItemFood {
 	         int j = MathHelper.clamp_int(par1, 0, itemcount-1);
 	         return this.item_icon[j];
 	}
-	
-	
 }
 
 
