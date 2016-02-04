@@ -1,10 +1,10 @@
 package morethanhidden.MolecularGems.mob;
 
-import morethanhidden.MolecularGems.MainRegistry;
+import morethanhidden.MolecularGems.MolecularGems;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
-import cpw.mods.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class MolecularMobs {
 	
@@ -23,8 +23,8 @@ public class MolecularMobs {
 	public static void createEntity(Class entityClass, String entityName, int solidColour, int spotColour, boolean worldspawn){
 	int randomId = EntityRegistry.findGlobalUniqueEntityId();
 	EntityRegistry.registerGlobalEntityID(entityClass, entityName, randomId);
-	EntityRegistry.registerModEntity(entityClass, entityName, randomId, MainRegistry.instance, 10, 1, true);
-	if (worldspawn){EntityRegistry.addSpawn(entityClass, 40, 1, 2, EnumCreatureType.monster, BiomeGenBase.plains, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.swampland);}
+	EntityRegistry.registerModEntity(entityClass, entityName, randomId, MolecularGems.instance, 10, 1, true);
+	if (worldspawn){EntityRegistry.addSpawn(entityClass, 40, 1, 2, EnumCreatureType.MONSTER, BiomeGenBase.plains, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.swampland);}
 	createEgg(randomId, solidColour, spotColour);
 	}
 	

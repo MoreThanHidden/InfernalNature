@@ -1,21 +1,13 @@
 package morethanhidden.MolecularGems.blocks;
 
-import ibxm.Player;
-
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import morethanhidden.MolecularGems.MainRegistry;
+import morethanhidden.MolecularGems.MolecularGems;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.Vec3i;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
@@ -23,30 +15,25 @@ import net.minecraftforge.fluids.Fluid;
 
 public class BlockLiquidGrass extends BlockFluidClassic{
 
-        @SideOnly(Side.CLIENT)
-        protected IIcon stillIcon;
-        @SideOnly(Side.CLIENT)
-        protected IIcon flowingIcon;
-        
         private int tickcount = 0;
         
         public BlockLiquidGrass(Fluid fluid, Material material) {
                 super(fluid, material);
-                setCreativeTab(MainRegistry.tabmoleculargems);
+                setCreativeTab(MolecularGems.tabmoleculargems);
         }
         
         @Override
-        public void updateTick(World world, int x, int y, int z, Random rand)
+        public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
         {
-            int quantaRemaining = quantaPerBlock - world.getBlockMetadata(x, y, z);
+            int quantaRemaining = quantaPerBlock - world.getBlockState(pos).getValue(LEVEL);
             int expQuanta = -101;
             
             //Add 1 to the tick count integer
             
             
             if(tickcount >= 5){
-            	world.setBlock(x, y, z, Blocks.air);
-                world.setBlock(x, y, z, Blocks.grass);
+            	world.setBlockState(pos, Blocks.air.getDefaultState());
+                world.setBlockState(pos, Blocks.grass.getDefaultState());
                 return;
     		}else{
             tickcount++;
@@ -55,23 +42,23 @@ public class BlockLiquidGrass extends BlockFluidClassic{
             // check adjacent block levels if non-source
             if (quantaRemaining < quantaPerBlock)
             {
-                int y2 = y - densityDir;
+                int y2 = pos.getY() - densityDir;
 
-                if (world.getBlock(x,     y2, z    ) == this ||
-                    world.getBlock(x - 1, y2, z    ) == this ||
-                    world.getBlock(x + 1, y2, z    ) == this ||
-                    world.getBlock(x,     y2, z - 1) == this ||
-                    world.getBlock(x,     y2, z + 1) == this)
+                if (world.getBlockState(new BlockPos(pos.getX(), y2, pos.getZ())) == this ||
+                    world.getBlockState(new BlockPos(pos.getX() - 1, y2, pos.getZ())) == this ||
+                    world.getBlockState(new BlockPos(pos.getX() + 1, y2, pos.getZ())) == this ||
+                    world.getBlockState(new BlockPos(pos.getX(), y2, pos.getZ() - 1)) == this ||
+                    world.getBlockState(new BlockPos(pos.getX(), y2, pos.getZ() + 1)) == this)
                 {
                     expQuanta = quantaPerBlock - 1;
                 }
                 else
                 {
                     int maxQuanta = -100;
-                    maxQuanta = getLargerQuanta(world, x - 1, y, z,     maxQuanta);
-                    maxQuanta = getLargerQuanta(world, x + 1, y, z,     maxQuanta);
-                    maxQuanta = getLargerQuanta(world, x,     y, z - 1, maxQuanta);
-                    maxQuanta = getLargerQuanta(world, x,     y, z + 1, maxQuanta);
+                    maxQuanta = getLargerQuanta(world, pos.subtract(new Vec3i(1,0,0)), maxQuanta);
+                    maxQuanta = getLargerQuanta(world, pos.add(1,0,0), maxQuanta);
+                    maxQuanta = getLargerQuanta(world, pos.subtract(new Vec3i(0,0,1)), maxQuanta);
+                    maxQuanta = getLargerQuanta(world, pos.add(0,0,1), maxQuanta);
 
                     expQuanta = maxQuanta - 1;
                 }
@@ -83,28 +70,30 @@ public class BlockLiquidGrass extends BlockFluidClassic{
 
                     if (expQuanta <= 0)
                     {
-                        world.setBlock(x, y, z, Blocks.air);
-                        world.setBlock(x, y, z, Blocks.grass);
+                        world.setBlockState(pos, Blocks.air.getDefaultState());
+                        world.setBlockState(pos, Blocks.grass.getDefaultState());
                         tickcount = 0;
                     }
                     else
                     {
-                        world.setBlockMetadataWithNotify(x, y, z, quantaPerBlock - expQuanta, 3);
-                        world.scheduleBlockUpdate(x, y, z, this, tickRate);
-                        world.notifyBlocksOfNeighborChange(x, y, z, this);
+                        state = state.withProperty(LEVEL, Integer.valueOf(quantaPerBlock - expQuanta));
+                        world.setBlockState(pos, state, 3);
+                        world.scheduleUpdate(pos, this, tickRate);
+                        world.notifyNeighborsOfStateChange(pos, this);
                     }
                 }
             }
             // This is a "source" block, set meta to zero, and send a server only update
             else if (quantaRemaining >= quantaPerBlock)
             {
-                world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+                state = state.withProperty(LEVEL, Integer.valueOf(0));
+                world.setBlockState(pos, state, 2);
             }
 
             // Flow vertically if possible
-            if (canDisplace(world, x, y + densityDir, z))
+            if (canDisplace(world, pos.add(0, densityDir, 0)))
             {
-                flowIntoBlock(world, x, y + densityDir, z, 1);
+                flowIntoBlock(world, pos.add(0, densityDir, 0), 1);
 
                 return;
             }
@@ -116,59 +105,44 @@ public class BlockLiquidGrass extends BlockFluidClassic{
             	return;
             }
 
-            if (isSourceBlock(world, x, y, z) || !isFlowingVertically(world, x, y, z))
+            if (isSourceBlock(world, pos) || !isFlowingVertically(world, pos))
             {
-                if (world.getBlock(x, y - densityDir, z) == this)
+                if (world.getBlockState(new BlockPos(pos.getX(), pos.getY() - densityDir, pos.getZ())) == this)
                 {
                     flowMeta = 1;
                 }
-                boolean flowTo[] = getOptimalFlowDirections(world, x, y, z);
+                boolean flowTo[] = getOptimalFlowDirections(world, pos);
 
-                if (flowTo[0]) flowIntoBlock(world, x - 1, y, z,     flowMeta);
-                if (flowTo[1]) flowIntoBlock(world, x + 1, y, z,     flowMeta);
-                if (flowTo[2]) flowIntoBlock(world, x,     y, z - 1, flowMeta);
-                if (flowTo[3]) flowIntoBlock(world, x,     y, z + 1, flowMeta);
-                
+                if (flowTo[0]) flowIntoBlock(world, pos.subtract(new Vec3i(1,0,0)),     flowMeta);
+                if (flowTo[1]) flowIntoBlock(world, pos.add(1,0,0),     flowMeta);
+                if (flowTo[2]) flowIntoBlock(world, pos.subtract(new Vec3i(0,0,1)), flowMeta);
+                if (flowTo[3]) flowIntoBlock(world, pos.add(0,0,1), flowMeta);
 
             }
             
 
 
         }
-                       
-        @Override
-        public IIcon getIcon(int side, int meta) {
-                return (side == 0 || side == 1)? stillIcon : flowingIcon;
-                
-        }
-        
-        @SideOnly(Side.CLIENT)
-        @Override
-        public void registerBlockIcons(IIconRegister register) {
-                stillIcon = register.registerIcon("moleculargems:fluidGrassStill");
-                flowingIcon = register.registerIcon("moleculargems:fluidGrassFlowing");
-                MainRegistry.liquidGrass.setIcons(stillIcon, flowingIcon);
-        }
-        
-        @Override
-        public boolean canDisplace(IBlockAccess world, int x, int y, int z) {
-                if (world.getBlock(x,  y,  z).getMaterial().isLiquid()) return false;
-                return super.canDisplace(world, x, y, z);
-                
-        }
-        
-        @Override
-        public boolean displaceIfPossible(World world, int x, int y, int z) {
-                if (world.getBlock(x,  y,  z).getMaterial().isLiquid()) return false;
-                return super.displaceIfPossible(world, x, y, z);
-        }
-        
-        @Override
-        public void onBlockAdded(World world, int x, int y, int z)
-        {
-            world.scheduleBlockUpdate(x, y, z, this, tickRate);
-            tickcount = 0;
-        }
+
+
+    @Override
+    public void onBlockAdded(World world, BlockPos pos, IBlockState state)
+    {
+        world.scheduleBlockUpdate(pos, this, tickRate, 0);
+        tickcount = 0;
+    }
+
+    @Override
+    public boolean canDisplace(IBlockAccess world, BlockPos pos) {
+        if (world.getBlockState(pos).getBlock().getMaterial().isLiquid()) return false;
+        return super.canDisplace(world, pos);
+    }
+
+    @Override
+    public boolean displaceIfPossible(World world, BlockPos pos) {
+        if (world.getBlockState(pos).getBlock().getMaterial().isLiquid()) return false;
+        return super.displaceIfPossible(world, pos);
+    }
         
 
-        }
+}

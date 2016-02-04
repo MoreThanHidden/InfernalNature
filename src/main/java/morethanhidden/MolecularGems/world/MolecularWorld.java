@@ -1,9 +1,10 @@
  package morethanhidden.MolecularGems.world;
 
-import cpw.mods.fml.common.IWorldGenerator;
-import cpw.mods.fml.common.registry.GameRegistry;
 
-public class MolecularWorld {
+ import net.minecraftforge.fml.common.IWorldGenerator;
+ import net.minecraftforge.fml.common.registry.GameRegistry;
+
+ public class MolecularWorld {
 	
 	public static void mainRegistry(){
 		initWorldGen();

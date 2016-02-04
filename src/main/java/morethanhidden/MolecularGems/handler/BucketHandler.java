@@ -1,14 +1,16 @@
 package morethanhidden.MolecularGems.handler;
 
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import morethanhidden.MolecularGems.MainRegistry;
+import morethanhidden.MolecularGems.MolecularGems;
+import morethanhidden.MolecularGems.blocks.BlockLiquidElectricOoze;
+import morethanhidden.MolecularGems.blocks.BlockLiquidFire;
+import morethanhidden.MolecularGems.blocks.BlockLiquidGrass;
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class BucketHandler {
 
@@ -21,26 +23,26 @@ public class BucketHandler {
 				return;
 
 			event.result = result;
-			event.setResult(Result.ALLOW);
+			event.setResult(Event.Result.ALLOW);
 		}
 
 		public ItemStack fillCustomBucket(World world, MovingObjectPosition pos) {
-			Block block = world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
+			Block block = world.getBlockState(pos.getBlockPos()).getBlock();
 
-			if ((block == MainRegistry.blockElectricOooze)
-					&& world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0) {
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				return new ItemStack(MainRegistry.bucketliquidElectricOoze);
+			if ((block == MolecularGems.blockElectricOooze)
+					&& world.getBlockState(pos.getBlockPos()).getValue(((BlockLiquidElectricOoze) block).LEVEL) == 0) {
+				world.setBlockToAir(pos.getBlockPos());
+				return new ItemStack(MolecularGems.bucketliquidElectricOoze);
 				
-			} else if ((block == MainRegistry.blockLiquidGrass)
-					&& world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0) {
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				return new ItemStack(MainRegistry.bucketliquidGrass);
+			} else if ((block == MolecularGems.blockLiquidGrass)
+					&& world.getBlockState(pos.getBlockPos()).getValue(((BlockLiquidGrass) block).LEVEL) == 0) {
+				world.setBlockToAir(pos.getBlockPos());
+				return new ItemStack(MolecularGems.bucketliquidGrass);
 				
-			} else if ((block == MainRegistry.blockLiquidFire)
-					&& world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0) {
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				return new ItemStack(MainRegistry.bucketliquidFire);
+			} else if ((block == MolecularGems.blockLiquidFire)
+					&& world.getBlockState(pos.getBlockPos()).getValue(((BlockLiquidFire) block).LEVEL) == 0) {
+				world.setBlockToAir(pos.getBlockPos());
+				return new ItemStack(MolecularGems.bucketliquidFire);
 				
 			} else
 				return null;

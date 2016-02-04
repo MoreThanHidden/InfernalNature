@@ -2,27 +2,20 @@ package morethanhidden.MolecularGems.items;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import morethanhidden.MolecularGems.MainRegistry;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import morethanhidden.MolecularGems.MolecularGems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 
 public class Gem extends Item{
-	public static final String[] itemNames = new String[] {"gemClinohumite", "gemSugilite", "gemJadite"};
-	
-	@SideOnly(Side.CLIENT)
-	private IIcon[] item_icon;
+	public static final String[] itemNames = new String[] {"gemYellow", "gemBlue", "gemGreen"};
+
 	
 	public Gem() {
 		setHasSubtypes(true);
 		maxStackSize = 64;
-        setCreativeTab(MainRegistry.tabmoleculargems);
+        setCreativeTab(MolecularGems.tabmoleculargems);
 }
 
 	int itemcount = 3;
@@ -40,26 +33,6 @@ public class Gem extends Item{
 		         {
 		                 list.add(new ItemStack(this, 1, j));
 		         }
-	}
-	
-	@Override
-	public void registerIcons(IIconRegister par1IconRegister)
-	{
-	         this.item_icon = new IIcon[itemNames.length];
-
-	         for (int i = 0; i < itemNames.length; ++i)
-	         {
-	                 this.item_icon[i] = par1IconRegister.registerIcon("moleculargems:" + itemNames[i]);
-	         }
-	}
-	
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int par1)
-	{
-	         int j = MathHelper.clamp_int(par1, 0, itemcount-1);
-	         return this.item_icon[j];
 	}
 	
 	

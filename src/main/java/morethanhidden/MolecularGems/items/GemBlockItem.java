@@ -19,13 +19,13 @@ public class GemBlockItem extends ItemBlock {
 	        switch(itemStack.getItemDamage()) {
 
 	            case 0:
-	                name = "ClinohumiteBlock";
+	                name = "yellowGemBlock";
 	                break;
 	            case 1:
-	                name = "SugiliteBlock";
+	                name = "blueGemBlock";
 	                break;
 	            case 2:
-	                name = "JaditeBlock";
+	                name = "greenGemBlock";
 	                break;
 	            default:
 	                name = "noMeta";
