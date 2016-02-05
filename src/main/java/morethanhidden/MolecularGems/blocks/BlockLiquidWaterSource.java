@@ -20,6 +20,7 @@ public class BlockLiquidWaterSource extends BlockFluidClassic{
         public BlockLiquidWaterSource(Fluid fluid, Material material) {
                 super(fluid, material);
                 setCreativeTab(MolecularGems.tabmoleculargems);
+                setUnlocalizedName("blockliquidwatersource");
         }
        
         @Override

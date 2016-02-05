@@ -20,6 +20,7 @@ public class BlockLiquidGrass extends BlockFluidClassic{
         public BlockLiquidGrass(Fluid fluid, Material material) {
                 super(fluid, material);
                 setCreativeTab(MolecularGems.tabmoleculargems);
+                setUnlocalizedName("blockliquidgrass");
         }
         
         @Override

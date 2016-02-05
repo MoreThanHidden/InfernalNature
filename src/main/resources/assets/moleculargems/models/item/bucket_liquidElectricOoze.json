@@ -1,0 +1,6 @@
+{
+    "parent": "moleculargems:item/standardItem",
+    "textures": {
+        "layer0": "moleculargems:items/bucket_liquidElectricOoze"
+    }
+}

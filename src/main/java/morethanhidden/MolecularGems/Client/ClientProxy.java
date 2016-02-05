@@ -14,9 +14,13 @@ public class ClientProxy extends common {
 	
 	@Override
 		public void registerRenderers() {
-        
-        	// Set Mob Render
+
+        // Set Mob Render
         //RenderingRegistry.registerEntityRenderingHandler(EntityAncientMob.class, new RenderAncientMob(, 0));
+
+		//Register Item Models
+		ItemModelRegistry.init();
+
 
 	}
 	

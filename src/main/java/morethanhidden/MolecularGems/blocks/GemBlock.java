@@ -9,6 +9,7 @@ public class GemBlock extends Block {
 	public GemBlock () {
 		super(Material.rock);
 		setCreativeTab(MolecularGems.tabmoleculargems);
+		setUnlocalizedName("gemBlock");
 	}
 	
 }

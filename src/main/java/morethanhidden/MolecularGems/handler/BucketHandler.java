@@ -4,6 +4,8 @@ import morethanhidden.MolecularGems.MolecularGems;
 import morethanhidden.MolecularGems.blocks.BlockLiquidElectricOoze;
 import morethanhidden.MolecularGems.blocks.BlockLiquidFire;
 import morethanhidden.MolecularGems.blocks.BlockLiquidGrass;
+import morethanhidden.MolecularGems.registry.BlockRegistry;
+import morethanhidden.MolecularGems.registry.ItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
@@ -29,20 +31,20 @@ public class BucketHandler {
 		public ItemStack fillCustomBucket(World world, MovingObjectPosition pos) {
 			Block block = world.getBlockState(pos.getBlockPos()).getBlock();
 
-			if ((block == MolecularGems.blockElectricOooze)
+			if ((block == BlockRegistry.blockElectricOoze)
 					&& world.getBlockState(pos.getBlockPos()).getValue(((BlockLiquidElectricOoze) block).LEVEL) == 0) {
 				world.setBlockToAir(pos.getBlockPos());
-				return new ItemStack(MolecularGems.bucketliquidElectricOoze);
+				return new ItemStack(ItemRegistry.bucketliquidElectricOoze);
 				
-			} else if ((block == MolecularGems.blockLiquidGrass)
+			} else if ((block == BlockRegistry.blockLiquidGrass)
 					&& world.getBlockState(pos.getBlockPos()).getValue(((BlockLiquidGrass) block).LEVEL) == 0) {
 				world.setBlockToAir(pos.getBlockPos());
-				return new ItemStack(MolecularGems.bucketliquidGrass);
+				return new ItemStack(ItemRegistry.bucketliquidGrass);
 				
-			} else if ((block == MolecularGems.blockLiquidFire)
+			} else if ((block == BlockRegistry.blockLiquidFire)
 					&& world.getBlockState(pos.getBlockPos()).getValue(((BlockLiquidFire) block).LEVEL) == 0) {
 				world.setBlockToAir(pos.getBlockPos());
-				return new ItemStack(MolecularGems.bucketliquidFire);
+				return new ItemStack(ItemRegistry.bucketliquidFire);
 				
 			} else
 				return null;

@@ -6,6 +6,7 @@ import java.util.Random;
 
 import morethanhidden.MolecularGems.MolecularGems;
 import morethanhidden.MolecularGems.Client.ClientProxy;
+import morethanhidden.MolecularGems.registry.ItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -26,6 +27,7 @@ public class GemOre extends Block{
 			setCreativeTab(MolecularGems.tabmoleculargems);
 			setHardness(4.0F);
 			setHarvestLevel("pickaxe",3);
+			setUnlocalizedName("gemore");
 			
 		}
     
@@ -50,10 +52,10 @@ public class GemOre extends Block{
      
          	// Choose what will be on the list
          	if (luckDraw == 0) { 
-         		ret.add(new ItemStack(MolecularGems.regularGem, 1));
+         		ret.add(new ItemStack(ItemRegistry.regularGem, 1));
          	}
          	if (luckDraw == 1) { 
-         		ret.add(new ItemStack(MolecularGems.fragmentGem, 1));
+         		ret.add(new ItemStack(ItemRegistry.fragmentGem, 1));
          	}
          	
         }

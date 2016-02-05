@@ -1,6 +1,7 @@
 package morethanhidden.MolecularGems.blocks;
 
 import morethanhidden.MolecularGems.MolecularGems;
+import morethanhidden.MolecularGems.registry.AchievementRegistry;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
@@ -20,6 +21,7 @@ public class BlockLiquidElectricOoze extends BlockFluidClassic{
                 super(fluid, material);
                 setCreativeTab(MolecularGems.tabmoleculargems);
                 setLightLevel(0.625F);
+                setUnlocalizedName("blockliquidelectricooze");
         }
         
         @Override
@@ -42,7 +44,7 @@ public class BlockLiquidElectricOoze extends BlockFluidClassic{
         	EntityPlayer player = world.getClosestPlayer(pos.getX(),pos.getY(),pos.getZ(), 3);
         	
         	if (player != null){
-        	player.addStat(MolecularGems.electrifying, 1);}
+        	player.addStat(AchievementRegistry.electrifying, 1);}
         	
         	}
         }

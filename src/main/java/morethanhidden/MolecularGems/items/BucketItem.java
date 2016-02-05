@@ -5,12 +5,12 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBucket;
 
-public class BucketLiquidFire extends ItemBucket {
+public class BucketItem extends ItemBucket {
 
-	public BucketLiquidFire(Block block) {
+	public BucketItem(Block block) {
 		super(block);
 	        setCreativeTab(MolecularGems.tabmoleculargems);
-	        setUnlocalizedName("BucketLiquidFire");
+	        setUnlocalizedName("bucket_" + block.getUnlocalizedName().replace("tile.", ""));
 	        setContainerItem(Items.bucket);
 	}
 

@@ -22,6 +22,7 @@ public class BlockLiquidFire extends BlockFluidClassic{
         public BlockLiquidFire(Fluid fluid, Material material) {
                 super(fluid, material);
                 setCreativeTab(MolecularGems.tabmoleculargems);
+                setUnlocalizedName("blockliquidfire");
         }
 
         

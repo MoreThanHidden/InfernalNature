@@ -3,6 +3,7 @@ package morethanhidden.MolecularGems.world;
 import java.util.Random;
 
 import morethanhidden.MolecularGems.MolecularGems;
+import morethanhidden.MolecularGems.registry.BlockRegistry;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -28,7 +29,7 @@ public class WorldGenMoleculer implements IWorldGenerator {
 			int randPosY = rand.nextInt(10);
 			int randPosZ = chunkZ + rand.nextInt(16);
 			
-			(new WorldGenMinable(MolecularGems.gemOre.getDefaultState(), 1)).generate(world, rand, new BlockPos(randPosX, randPosY, randPosZ));
+			(new WorldGenMinable(BlockRegistry.gemOre.getDefaultState(), 1)).generate(world, rand, new BlockPos(randPosX, randPosY, randPosZ));
 		}
 		}
 		

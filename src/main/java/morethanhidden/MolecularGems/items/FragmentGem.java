@@ -17,6 +17,7 @@ public class FragmentGem extends Item {
 		setHasSubtypes(true);
 		maxStackSize = 64;
         setCreativeTab(MolecularGems.tabmoleculargems);
+		setUnlocalizedName(itemNames[0]);
 }
 
 	int itemcount = 3;

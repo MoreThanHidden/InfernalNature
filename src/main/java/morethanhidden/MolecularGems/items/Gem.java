@@ -3,19 +3,24 @@ package morethanhidden.MolecularGems.items;
 import java.util.List;
 
 import morethanhidden.MolecularGems.MolecularGems;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class Gem extends Item{
-	public static final String[] itemNames = new String[] {"gemYellow", "gemBlue", "gemGreen"};
+	public static final String[] itemNames = new String[] {"gemOrange", "gemPurple", "gemGreen"};
 
-	
+
 	public Gem() {
 		setHasSubtypes(true);
 		maxStackSize = 64;
         setCreativeTab(MolecularGems.tabmoleculargems);
+		setUnlocalizedName("gemRegular");
 }
 
 	int itemcount = 3;

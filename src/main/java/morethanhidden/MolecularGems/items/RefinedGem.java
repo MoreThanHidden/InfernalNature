@@ -17,14 +17,15 @@ public class RefinedGem extends Item {
 		setHasSubtypes(true);
 		maxStackSize = 64;
         setCreativeTab(MolecularGems.tabmoleculargems);
+		setUnlocalizedName("refinedGem");
 }
 
 	int itemcount = 3;
 
 	public String getUnlocalizedName(ItemStack par1ItemStack)
 	{
-	         int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, itemcount-1);
-	         return super.getUnlocalizedName() + "." + itemNames[i];
+		int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, itemcount-1);
+		return super.getUnlocalizedName() + "." + itemNames[i];
 	}
 	
 	@Override
@@ -35,6 +36,8 @@ public class RefinedGem extends Item {
 		                 list.add(new ItemStack(this, 1, j));
 		         }
 		}
+
+
 }
 
 
