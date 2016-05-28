@@ -1,9 +1,13 @@
+package morethanhidden.powerofmagic.blocks;
 
 import java.util.Random;
 
+import morethanhidden.powerofmagic.powerofmagic;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
@@ -17,6 +21,7 @@ public class BlockLiquidFire extends BlockFluidClassic{
         
         public BlockLiquidFire(Fluid fluid, Material material) {
                 super(fluid, material);
+                setCreativeTab(powerofmagic.tabpowerofmagic);
                 setUnlocalizedName("blockliquidfire");
         }
 
@@ -32,6 +37,8 @@ public class BlockLiquidFire extends BlockFluidClassic{
             
             
             if(tickcount >= 5){
+            	world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                world.setBlockState(pos, Blocks.FIRE.getDefaultState());
                 return;
     		}else{
             tickcount++;
@@ -68,6 +75,8 @@ public class BlockLiquidFire extends BlockFluidClassic{
 
                     if (expQuanta <= 0)
                     {
+                        world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                        world.setBlockState(pos, Blocks.FIRE.getDefaultState());
                         tickcount = 0;
                     }
                     else
@@ -129,11 +138,13 @@ public class BlockLiquidFire extends BlockFluidClassic{
         
         @Override
         public boolean canDisplace(IBlockAccess world, BlockPos pos) {
+                if (world.getBlockState(pos).getBlock().isAssociatedBlock(world.getBlockState(pos).getBlock())) return false;
                 return super.canDisplace(world, pos);
         }
         
         @Override
         public boolean displaceIfPossible(World world, BlockPos pos) {
+                if (world.getBlockState(pos).getBlock().isAssociatedBlock(world.getBlockState(pos).getBlock())) return false;
                 return super.displaceIfPossible(world, pos);
         }
         
