@@ -1,0 +1,36 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "powerofmagic:blocks/blockCable",
+      "particle": "powerofmagic:blocks/blockCable"
+    },
+    "model": "powerofmagic:mage_cable"
+  },
+  "variants": {
+    "down": {
+      "true": {"submodel": "powerofmagic:mage_cableext"},
+      "false":{}
+    },
+    "east": {
+      "true": {"submodel": "powerofmagic:mage_cableext", "x": 90, "y": -90},
+      "false":{}
+    },
+    "north": {
+      "true": {"submodel": "powerofmagic:mage_cableext", "x": -90},
+      "false":{}
+    },
+    "south": {
+      "true": {"submodel": "powerofmagic:mage_cableext", "x": 90},
+      "false":{}
+    },
+    "up": {
+      "true": {"submodel": "powerofmagic:mage_cableext", "x": 180},
+      "false":{}
+    },
+    "west": {
+      "true": {"submodel": "powerofmagic:mage_cableext", "x": 90, "y": 90},
+      "false":{}
+    }
+  }
+}

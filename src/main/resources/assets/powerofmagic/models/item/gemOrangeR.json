@@ -1,6 +1,0 @@
-{
-    "parent": "powerofmagic:item/standardItem",
-    "textures": {
-        "layer0": "powerofmagic:items/gemOrangeR"
-    }
-}

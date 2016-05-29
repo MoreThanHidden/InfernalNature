@@ -26,37 +26,54 @@ public class GemOre extends Block{
 			setCreativeTab(powerofmagic.tabpowerofmagic);
 			setHardness(4.0F);
 			setHarvestLevel("pickaxe",3);
-			setUnlocalizedName("gemore");
+			setUnlocalizedName("gemOre");
 			
 		}
+
+    public String getUnlocalizedName() {
+        return super.getUnlocalizedName().substring(5);
+    }
 
 	@Override
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) //get drops array
     {	 
     	ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-    	
-		// Gets how much items this block will drop
-         int count = 2 + quantityDropped(state, fortune, new Random());
-    	
-      // Here I make it drop random items
+
+         int count = 1 + quantityDropped(state, fortune, new Random());
+
          int luckDraw = 0;
+         int luckDraw2 = 0;
          Item itemDropped = null;
          
          for(int i = 0; i < count; i++)
          {
-         	// Gets a number between 0 and 1
-         	luckDraw = new Random().nextInt(2);
-         	itemDropped = null;
-         	
-     
-         	// Choose what will be on the list
-         	if (luckDraw == 0) { 
-         		ret.add(new ItemStack(ItemRegistry.regularGem, 1));
-         	}
-         	if (luckDraw == 1) { 
-         		ret.add(new ItemStack(ItemRegistry.fragmentGem, 1));
-         	}
-         	
+         	 // Gets a number between 0 and 3
+         	 luckDraw = new Random().nextInt(3);
+             luckDraw2 = new Random().nextInt(3);
+
+			 switch (luckDraw) {
+				case 0:
+         			ret.add(new ItemStack(ItemRegistry.regularGem, 1, 0));
+					break;
+				case 1:
+					ret.add(new ItemStack(ItemRegistry.regularGem, 1, 1));
+					break;
+				case 2:
+					ret.add(new ItemStack(ItemRegistry.regularGem, 1 , 2));
+					break;
+
+         	 }switch (luckDraw2) {
+                case 0:
+                    ret.add(new ItemStack(ItemRegistry.fragmentGem, 1, 0));
+                    break;
+                case 1:
+                    ret.add(new ItemStack(ItemRegistry.fragmentGem, 1, 1));
+                    break;
+                case 2:
+                    ret.add(new ItemStack(ItemRegistry.fragmentGem, 1, 2));
+                    break;
+            }
+
         }
          
     	return ret;

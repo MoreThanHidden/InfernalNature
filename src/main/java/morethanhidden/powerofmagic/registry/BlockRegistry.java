@@ -8,16 +8,20 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class BlockRegistry {
 
     public static Block gemOre = new GemOre();
-    public static Block gemBlock = new GemBlock();
-    public static Block blockElectricOoze = new BlockLiquidMana(MGFluids.liquidElectricOoze, Material.WATER);
+    public static Block blockGemGreen = new GemBlock("blockGemGreen");
+    public static Block blockGemPurple = new GemBlock("blockGemPurple");
+    public static Block blockGemOrange = new GemBlock("blockGemOrange");
+    public static Block blockLiquidMana = new BlockLiquidMana(MGFluids.liquidMana, Material.WATER);
     public static Block blockLiquidGrass = new BlockLiquidGrass(MGFluids.liquidGrass, Material.WATER);
     public static Block blockLiquidFire = new BlockLiquidFire(MGFluids.liquidFire, Material.LAVA);
     public static Block blockLiquidWaterSource = new BlockLiquidWaterSource(MGFluids.liquidWaterSource, Material.WATER);
 
     public static void init() {
         registerBlock(gemOre);
-        registerBlock(gemBlock);
-        registerBlock(blockElectricOoze);
+        registerBlock(blockGemGreen);
+        registerBlock(blockGemPurple);
+        registerBlock(blockGemOrange);
+        registerBlock(blockLiquidMana);
         registerBlock(blockLiquidFire);
         registerBlock(blockLiquidGrass);
         registerBlock(blockLiquidWaterSource);

@@ -20,7 +20,7 @@ public class WorldGenMoleculer implements IWorldGenerator {
 			int randPosY = rand.nextInt(10);
 			int randPosZ = chunkZ + rand.nextInt(16);
 			
-			(new WorldGenMinable(BlockRegistry.gemOre.getDefaultState(), 1)).generate(world, rand, new BlockPos(randPosX, randPosY, randPosZ));
+			(new WorldGenMinable(BlockRegistry.gemOre.getDefaultState(), 3)).generate(world, rand, new BlockPos(randPosX, randPosY, randPosZ));
 		}
 		}
 		

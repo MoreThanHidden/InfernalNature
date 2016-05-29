@@ -3,33 +3,30 @@ package morethanhidden.powerofmagic.Client;
         import morethanhidden.powerofmagic.powerofmagic;
         import morethanhidden.powerofmagic.registry.BlockRegistry;
         import morethanhidden.powerofmagic.registry.ItemRegistry;
+        import morethanhidden.powerofmagic.util.BlockModelResolver;
+        import morethanhidden.powerofmagic.util.ModelHelper;
         import net.minecraft.client.renderer.block.model.ModelResourceLocation;
         import net.minecraft.item.Item;
         import net.minecraftforge.client.model.ModelLoader;
-
-        import java.util.Locale;
-
+        import net.minecraftforge.common.MinecraftForge;
 
 public class ItemModelRegistry {
 
     public static void init() {
         //Items
-        registerItemModelWithMeta(ItemRegistry.regularGem, 0, "gemOrange");
-        registerItemModelWithMeta(ItemRegistry.regularGem, 1, "gemPurple");
-        registerItemModelWithMeta(ItemRegistry.regularGem, 2, "gemGreen");
-        registerItemModel(ItemRegistry.bucketliquidFire, "bucket_liquidFire");
-        registerItemModel(ItemRegistry.bucketliquidGrass, "bucket_liquidGrass");
-        registerItemModel(ItemRegistry.bucketliquidElectricOoze, "bucket_liquidMana");
+        //ModelHelper.registerItemModel(ItemRegistry.regularGem, 0);
+        //ModelHelper.registerItemModel(ItemRegistry.regularGem, 1);
+        //ModelHelper.registerItemModel(ItemRegistry.regularGem, 2);
+        ModelHelper.registerItemModel(ItemRegistry.bucketliquidFire, 0);
+        ModelHelper.registerItemModel(ItemRegistry.bucketliquidGrass, 0);
+        ModelHelper.registerItemModel(ItemRegistry.bucketliquidMana, 0);
 
         //Blocks
-        registerItemModel(Item.getItemFromBlock(BlockRegistry.gemBlock), "gemBlock");
-    }
+        ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.blockGemGreen), 0);
+        ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.blockGemOrange), 0);
+        ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.blockGemPurple), 0);
+        ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.gemOre), 0);
 
-    private static void registerItemModel(Item item, String name) {
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(powerofmagic.MODID + ":" + name, "inventory"));
-    }
-
-    private static void registerItemModelWithMeta(Item item, int meta, String name) {
-        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(powerofmagic.MODID + ":" + name, "inventory"));
+        MinecraftForge.EVENT_BUS.register(new BlockModelResolver());
     }
 }

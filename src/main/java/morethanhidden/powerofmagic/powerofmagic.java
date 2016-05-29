@@ -22,7 +22,7 @@ package morethanhidden.powerofmagic;
 	import net.minecraftforge.fml.relauncher.SideOnly;
 	import net.minecraftforge.oredict.OreDictionary;
 
-	@Mod(modid="powerofmagic", name="Molecular Gems", version="0.2")
+	@Mod(modid="powerofmagic", name="Power Of Magic", version="0.2")
 	public class powerofmagic {
 
 			public static String MODID = "powerofmagic";
@@ -37,7 +37,7 @@ package morethanhidden.powerofmagic;
 	        public static common proxy;
 	        
 	        //Creative tab for my mod
-	        public static CreativeTabs tabpowerofmagic = new CreativeTabs("Molecular Gems") {
+	        public static CreativeTabs tabpowerofmagic = new CreativeTabs("Power Of Magic") {
 	            @Override
 	            @SideOnly(Side.CLIENT)
 	            public Item getTabIconItem() {
@@ -47,9 +47,6 @@ package morethanhidden.powerofmagic;
 	        
 	        @Mod.EventHandler
 	        public void preInit(FMLPreInitializationEvent event) {
-
-	            GameRegistry.registerWorldGenerator(new WorldGenMoleculer(), 1);
-
 	            FMLCommonHandler.instance().bus().register(new CraftingHandler());
 	            FMLCommonHandler.instance().bus().register(new GemOnMineEvent());
 
@@ -65,6 +62,8 @@ package morethanhidden.powerofmagic;
 	        @Mod.EventHandler
 	        public void load(FMLInitializationEvent event) {
 
+				GameRegistry.registerWorldGenerator(new WorldGenMoleculer(), 10);
+
 				MolecularWorld.mainRegistry();
 				MolecularMobs.mainRegistry();
 
@@ -74,7 +73,7 @@ package morethanhidden.powerofmagic;
 	        
 	        public static void oreRegistration()
 	        {
-	                OreDictionary.registerOre("bucketElectricOoze", ItemRegistry.bucketliquidElectricOoze);
+	                OreDictionary.registerOre("bucketLiquidMana", ItemRegistry.bucketliquidMana);
 	                OreDictionary.registerOre("bucketLiquidGrass", ItemRegistry.bucketliquidGrass);
 	                OreDictionary.registerOre("bucketLiquidFire", ItemRegistry.bucketliquidFire);
 	        }
