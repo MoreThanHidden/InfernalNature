@@ -25,11 +25,11 @@ group= "morethanhidden.powerofmagic" // http://maven.apache.org/guides/mini/guid
 archivesBaseName = "powerofmagic"
 
 minecraft {
-    version = "1.9.4-12.17.0.1922-1.9.4"
+    version = "1.9.4-12.17.0.1950"
     runDir = "run"
     
    
-    mappings = "snapshot_20160527"
+    mappings = "snapshot_20160603"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 

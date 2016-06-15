@@ -8,6 +8,12 @@
     "model": "powerofmagic:mage_cable"
   },
   "variants": {
+    "normal": [{}],
+    "inventory": [{
+      "submodel": {
+        "submodel1": {"model": "powerofmagic:mage_cableext", "x": 90, "y": -90},
+        "submodel2": {"model": "powerofmagic:mage_cableext", "x": 90, "y": 90}
+      }}],
     "down": {
       "true": {"submodel": "powerofmagic:mage_cableext"},
       "false":{}

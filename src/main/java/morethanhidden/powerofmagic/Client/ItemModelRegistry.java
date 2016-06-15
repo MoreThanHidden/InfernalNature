@@ -13,19 +13,12 @@ package morethanhidden.powerofmagic.Client;
 public class ItemModelRegistry {
 
     public static void init() {
-        //Items
-        //ModelHelper.registerItemModel(ItemRegistry.regularGem, 0);
-        //ModelHelper.registerItemModel(ItemRegistry.regularGem, 1);
-        //ModelHelper.registerItemModel(ItemRegistry.regularGem, 2);
-        ModelHelper.registerItemModel(ItemRegistry.bucketliquidFire, 0);
-        ModelHelper.registerItemModel(ItemRegistry.bucketliquidGrass, 0);
-        ModelHelper.registerItemModel(ItemRegistry.bucketliquidMana, 0);
-
         //Blocks
         ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.blockGemGreen), 0);
         ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.blockGemOrange), 0);
         ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.blockGemPurple), 0);
         ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.gemOre), 0);
+        ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.blockCable), 0);
 
         MinecraftForge.EVENT_BUS.register(new BlockModelResolver());
     }

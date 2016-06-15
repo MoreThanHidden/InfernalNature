@@ -1,5 +1,6 @@
 package morethanhidden.powerofmagic;
 
+	import morethanhidden.powerofmagic.blocks.tiles.TileCable;
 	import morethanhidden.powerofmagic.handler.CraftingHandler;
 	import morethanhidden.powerofmagic.handler.GemOnMineEvent;
 	import morethanhidden.powerofmagic.mob.MolecularMobs;
@@ -54,6 +55,8 @@ package morethanhidden.powerofmagic;
 				BlockRegistry.init();
 				ItemRegistry.init();
 				AchievementRegistry.init();
+
+				GameRegistry.registerTileEntity(TileCable.class, "tilecable");
 
 				proxy.registerRenderers();
 

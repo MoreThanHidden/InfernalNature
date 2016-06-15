@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class BlockRegistry {
 
     public static Block gemOre = new GemOre();
+    public static Block blockCable = new BlockCable("mage_cable");
     public static Block blockGemGreen = new GemBlock("blockGemGreen");
     public static Block blockGemPurple = new GemBlock("blockGemPurple");
     public static Block blockGemOrange = new GemBlock("blockGemOrange");
@@ -18,6 +19,7 @@ public class BlockRegistry {
 
     public static void init() {
         registerBlock(gemOre);
+        registerBlock(blockCable);
         registerBlock(blockGemGreen);
         registerBlock(blockGemPurple);
         registerBlock(blockGemOrange);
