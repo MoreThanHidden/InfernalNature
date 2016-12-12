@@ -26,7 +26,7 @@ public class ItemRegistry {
     }
 
     private static void registerItem(Item item) {
-        GameRegistry.registerItem(item, item.getUnlocalizedName());
+        GameRegistry.register(item);
     }
 
 }

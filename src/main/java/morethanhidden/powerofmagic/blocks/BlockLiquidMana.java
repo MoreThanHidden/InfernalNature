@@ -21,6 +21,7 @@ public class BlockLiquidMana extends BlockFluidClassic{
                 setCreativeTab(powerofmagic.tabpowerofmagic);
                 setLightLevel(0.625F);
                 setUnlocalizedName("blockliquidmana");
+                setRegistryName(powerofmagic.MODID, "blockliquidmana");
         }
         
         @Override
@@ -39,7 +40,7 @@ public class BlockLiquidMana extends BlockFluidClassic{
         public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity e) {
         	if (powerofmagic.ShockingLiquid = true){
         	
-        	world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX(),pos.getY(),pos.getZ(), true));
+        	world.spawnEntity(new EntityLightningBolt(world, pos.getX(),pos.getY(),pos.getZ(), true));
         	EntityPlayer player = world.getClosestPlayer(pos.getX(),pos.getY(),pos.getZ(), 3, true);
         	
         	if (player != null){

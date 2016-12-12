@@ -25,16 +25,24 @@ group= "morethanhidden.powerofmagic" // http://maven.apache.org/guides/mini/guid
 archivesBaseName = "powerofmagic"
 
 minecraft {
-    version = "1.9.4-12.17.0.1950"
+    version = "1.11-13.19.1.2189"
     runDir = "run"
     
    
-    mappings = "snapshot_20160603"
+    mappings = "snapshot_20161211"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
+repositories {
+    ivy {
+        name 'mthcore'
+        artifactPattern "http://morethanhidden.16mb.com/mods/[module]-[revision].[ext]"
+    }
+}
+
 dependencies {
-    
+    deobfCompile name: 'mthcore', version: "1.11-0.1a-sources", ext: 'jar'
+    runtime name: 'mthcore', version: "1.11-0.1a", ext: 'jar'
 }
 
 processResources

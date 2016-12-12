@@ -3,6 +3,7 @@ package morethanhidden.powerofmagic.registry;
 import morethanhidden.powerofmagic.blocks.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockRegistry {
@@ -30,7 +31,8 @@ public class BlockRegistry {
     }
 
     private static void registerBlock(Block block) {
-        GameRegistry.registerBlock(block, block.getUnlocalizedName());
+        GameRegistry.register(block);
+        GameRegistry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
     }
 
 }

@@ -12,6 +12,7 @@ public class BucketItem extends ItemBucket {
 	        setCreativeTab(powerofmagic.tabpowerofmagic);
 	        setUnlocalizedName("bucket_" + block.getUnlocalizedName().replace("tile.", ""));
 	        setContainerItem(Items.BUCKET);
+			setRegistryName(powerofmagic.MODID, "bucket_" + block.getUnlocalizedName().replace("tile.", ""));
 	}
 
 }

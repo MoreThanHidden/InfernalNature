@@ -1,10 +1,7 @@
 package morethanhidden.powerofmagic.registry;
 
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 
 public class MGFluids {
@@ -21,11 +18,10 @@ public class MGFluids {
         FluidRegistry.registerFluid(liquidGrass);
         FluidRegistry.registerFluid(liquidFire);
 
-        FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidelectricooze", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(ItemRegistry.bucketliquidMana), new ItemStack(Items.BUCKET));
-        FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidwatersource", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(ItemRegistry.bucketliquidWaterSource), new ItemStack(Items.BUCKET));
-        FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidgrass", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(ItemRegistry.bucketliquidGrass), new ItemStack(Items.BUCKET));
-        FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("liquidfire", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(ItemRegistry.bucketliquidFire), new ItemStack(Items.BUCKET));
-
+        FluidRegistry.addBucketForFluid(liquidMana);
+        FluidRegistry.addBucketForFluid(liquidWaterSource);
+        FluidRegistry.addBucketForFluid(liquidGrass);
+        FluidRegistry.addBucketForFluid(liquidFire);
     }
 
 }

@@ -1,7 +1,5 @@
 package morethanhidden.powerofmagic.blocks;
 
-import java.util.Random;
-
 import morethanhidden.powerofmagic.powerofmagic;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,6 +11,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
+import java.util.Random;
+
 public class BlockLiquidWaterSource extends BlockFluidClassic{
 
         private int tickcount = 0;
@@ -21,6 +21,7 @@ public class BlockLiquidWaterSource extends BlockFluidClassic{
                 super(fluid, material);
                 setCreativeTab(powerofmagic.tabpowerofmagic);
                 setUnlocalizedName("blockliquidwatersource");
+                setRegistryName(powerofmagic.MODID, "blockliquidwatersource");
         }
        
         @Override
@@ -80,7 +81,7 @@ public class BlockLiquidWaterSource extends BlockFluidClassic{
                         state = state.withProperty(LEVEL, Integer.valueOf(quantaPerBlock - expQuanta));
                         world.setBlockState(pos, state, 3);
                         world.scheduleUpdate(pos, this, tickRate);
-                        world.notifyNeighborsOfStateChange(pos, this);
+                        world.notifyNeighborsOfStateChange(pos, this, true);
                     }
                 }
             }

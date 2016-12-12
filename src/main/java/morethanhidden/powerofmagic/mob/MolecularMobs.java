@@ -1,10 +1,9 @@
 package morethanhidden.powerofmagic.mob;
 
 import morethanhidden.powerofmagic.powerofmagic;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class MolecularMobs {
@@ -21,9 +20,9 @@ public class MolecularMobs {
 	}
 
 	public static void createEntity(Class entityClass, String entityName, int solidColour, int spotColour, boolean worldspawn){
-	EntityRegistry.registerModEntity(entityClass, entityName, 1, powerofmagic.instance, 10, 1, true);
+	EntityRegistry.registerModEntity(new ResourceLocation(powerofmagic.MODID, entityClass.getName()), entityClass, entityName, 1, powerofmagic.instance, 10, 1, true);
 	if (worldspawn){EntityRegistry.addSpawn(entityClass, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.PLAINS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.SWAMPLAND);}
-	EntityRegistry.registerEgg(entityClass, solidColour, spotColour);
+	EntityRegistry.registerEgg(new ResourceLocation(powerofmagic.MODID, entityClass.getName()), solidColour, spotColour);
 	}
 	
 }
