@@ -2,7 +2,7 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "all": "powerofmagic:blocks/blockGemOrange"
+            "all": "powerofmagic:blocks/blockgem_orange"
         },
         "model": "cube_all",
         "uvlock": true

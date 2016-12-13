@@ -13,6 +13,7 @@ import morethanhidden.powerofmagic.world.WorldGenMoleculer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -21,7 +22,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 
 	@Mod(modid="powerofmagic", name="Power Of Magic", version="0.2")
 	public class powerofmagic {
@@ -45,9 +45,14 @@ import net.minecraftforge.oredict.OreDictionary;
 	                return new ItemStack(Items.BOOK);
 	            }
 	        };
-	        
+
+			static {
+				FluidRegistry.enableUniversalBucket();
+			}
+
 	        @Mod.EventHandler
 	        public void preInit(FMLPreInitializationEvent event) {
+
 	            FMLCommonHandler.instance().bus().register(new CraftingHandler());
 	            FMLCommonHandler.instance().bus().register(new GemOnMineEvent());
 
@@ -70,15 +75,6 @@ import net.minecraftforge.oredict.OreDictionary;
 				MolecularWorld.mainRegistry();
 				MolecularMobs.mainRegistry();
 
-	            oreRegistration();
-	        }
-
-	        
-	        public static void oreRegistration()
-	        {
-	                OreDictionary.registerOre("bucketLiquidMana", ItemRegistry.bucketliquidMana);
-	                OreDictionary.registerOre("bucketLiquidGrass", ItemRegistry.bucketliquidGrass);
-	                OreDictionary.registerOre("bucketLiquidFire", ItemRegistry.bucketliquidFire);
 	        }
 	        
 	}

@@ -9,7 +9,7 @@ public class CompoundItem extends Item {
         setMaxStackSize(64);
         setCreativeTab(powerofmagic.tabpowerofmagic);
         setUnlocalizedName("CompoundMolecularBattery");
-        setRegistryName(powerofmagic.MODID, "CompoundMolecularBattery");
+        setRegistryName(powerofmagic.MODID, "compoundmolecularbattery");
 }
 	
 }

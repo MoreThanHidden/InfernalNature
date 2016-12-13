@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class FragmentGem extends Item implements IModelRegister {
-	public static final String[] itemNames = new String[] {"gemOrangeF", "gemPurpleF", "gemGreenF"};
+	public static final String[] itemNames = new String[] {"gemorangef", "gempurplef", "gemgreenf"};
 	
 	public FragmentGem() {
 		 super();

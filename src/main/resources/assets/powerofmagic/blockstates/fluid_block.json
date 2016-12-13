@@ -1,0 +1,20 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:fluid"
+  },
+  "variants": {
+    "fire": [{
+      "custom": { "fluid": "fire" }
+    }],
+    "grass": [{
+      "custom": { "fluid": "grass" }
+    }],
+    "watersource": [{
+      "custom": { "fluid": "watersource" }
+    }],
+    "mana": [{
+      "custom": { "fluid": "mana" }
+    }]
+  }
+}

@@ -25,7 +25,7 @@ public class GemOre extends Block{
 			setHardness(4.0F);
 			setHarvestLevel("pickaxe",3);
 			setUnlocalizedName("gemOre");
-            setRegistryName(powerofmagic.MODID, "gemOre");
+            setRegistryName(powerofmagic.MODID + ":gemore");
 			
 		}
 

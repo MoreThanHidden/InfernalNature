@@ -23,7 +23,7 @@ public class BlockLiquidFire extends BlockFluidClassic{
                 super(fluid, material);
                 setCreativeTab(powerofmagic.tabpowerofmagic);
                 setUnlocalizedName("blockliquidfire");
-                setRegistryName(powerofmagic.MODID, "blockliquidfire");
+                setRegistryName(powerofmagic.MODID, getLocalizedName().substring(5));
         }
 
         

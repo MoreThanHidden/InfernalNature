@@ -2,7 +2,7 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "all": "powerofmagic:blocks/gemOre"
+            "all": "powerofmagic:blocks/gemore"
         },
         "model": "cube_all",
         "uvlock": true

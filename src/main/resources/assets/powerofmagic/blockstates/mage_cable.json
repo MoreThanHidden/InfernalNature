@@ -2,8 +2,8 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "powerofmagic:blocks/blockCable",
-      "particle": "powerofmagic:blocks/blockCable"
+      "all": "powerofmagic:blocks/blockcable",
+      "particle": "powerofmagic:blocks/blockcable"
     },
     "model": "powerofmagic:mage_cable"
   },

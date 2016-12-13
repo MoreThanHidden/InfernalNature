@@ -20,7 +20,7 @@ public class Gem extends Item implements IModelRegister{
 		maxStackSize = 64;
         setCreativeTab(powerofmagic.tabpowerofmagic);
 		setUnlocalizedName("gemRegular");
-		setRegistryName(powerofmagic.MODID, "gemRegular");
+		setRegistryName(powerofmagic.MODID, "gemregular");
 }
 
 	int itemcount = 3;
