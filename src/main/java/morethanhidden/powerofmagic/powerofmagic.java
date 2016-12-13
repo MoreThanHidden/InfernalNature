@@ -7,7 +7,7 @@ import morethanhidden.powerofmagic.mob.MolecularMobs;
 import morethanhidden.powerofmagic.registry.AchievementRegistry;
 import morethanhidden.powerofmagic.registry.BlockRegistry;
 import morethanhidden.powerofmagic.registry.ItemRegistry;
-import morethanhidden.powerofmagic.registry.MGFluids;
+import morethanhidden.powerofmagic.registry.PMFluidRegistry;
 import morethanhidden.powerofmagic.world.MolecularWorld;
 import morethanhidden.powerofmagic.world.WorldGenMoleculer;
 import net.minecraft.creativetab.CreativeTabs;
@@ -56,7 +56,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 	            FMLCommonHandler.instance().bus().register(new CraftingHandler());
 	            FMLCommonHandler.instance().bus().register(new GemOnMineEvent());
 
-				MGFluids.init();
+				PMFluidRegistry.init();
 				BlockRegistry.init();
 				ItemRegistry.init();
 				AchievementRegistry.init();

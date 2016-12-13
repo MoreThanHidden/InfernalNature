@@ -1,14 +1,10 @@
 package morethanhidden.powerofmagic.Client;
 
-        import morethanhidden.powerofmagic.powerofmagic;
         import morethanhidden.powerofmagic.registry.BlockRegistry;
-        import morethanhidden.powerofmagic.registry.ItemRegistry;
-        import morethanhidden.powerofmagic.util.BlockModelResolver;
-        import morethanhidden.powerofmagic.util.ModelHelper;
-        import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-        import net.minecraft.item.Item;
-        import net.minecraftforge.client.model.ModelLoader;
-        import net.minecraftforge.common.MinecraftForge;
+import morethanhidden.powerofmagic.util.BlockModelResolver;
+import morethanhidden.powerofmagic.util.ModelHelper;
+import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ItemModelRegistry {
 

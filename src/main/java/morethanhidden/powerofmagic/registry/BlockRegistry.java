@@ -13,10 +13,10 @@ public class BlockRegistry {
     public static Block blockGemGreen = new GemBlock("blockgem_green");
     public static Block blockGemPurple = new GemBlock("blockgem_purple");
     public static Block blockGemOrange = new GemBlock("blockgem_orange");
-    public static Block blockLiquidMana = new BlockLiquidMana(MGFluids.liquidMana, Material.WATER);
-    public static Block blockLiquidGrass = new BlockLiquidGrass(MGFluids.liquidGrass, Material.WATER);
-    public static Block blockLiquidFire = new BlockLiquidFire(MGFluids.liquidFire, Material.LAVA);
-    public static Block blockLiquidWaterSource = new BlockLiquidWaterSource(MGFluids.liquidWaterSource, Material.WATER);
+    public static Block blockLiquidMana = new BlockLiquidMana(PMFluidRegistry.liquidMana, Material.WATER);
+    public static Block blockLiquidGrass = new BlockLiquidGrass(PMFluidRegistry.liquidGrass, Material.WATER);
+    public static Block blockLiquidFire = new BlockLiquidFire(PMFluidRegistry.liquidFire, Material.LAVA);
+    public static Block blockLiquidWaterSource = new BlockLiquidWaterSource(PMFluidRegistry.liquidWaterSource, Material.WATER);
 
     public static void init() {
         registerBlock(gemOre);

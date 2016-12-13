@@ -8,9 +8,9 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.UniversalBucket;
 
-public class MGFluids {
+public class PMFluidRegistry {
 
-    public static Fluid liquidMana = new Fluid("mana", new ResourceLocation(powerofmagic.MODID, "blocks/liquidmana_still"), new ResourceLocation(powerofmagic.MODID, "blocks/liquidmana_flowing"));
+    public static Fluid liquidMana = new Fluid("mana", new ResourceLocation(powerofmagic.MODID, "blocks/liquidmana_still"), new ResourceLocation(powerofmagic.MODID, "blocks/liquidmana_flow"));
     public static Fluid liquidGrass = new Fluid("grass", new ResourceLocation(powerofmagic.MODID, "blocks/liquidgrass_still"), new ResourceLocation(powerofmagic.MODID, "blocks/liquidgrass_flow"));
     public static Fluid liquidFire = new Fluid("fire", new ResourceLocation(powerofmagic.MODID, "blocks/liquidfire_still"), new ResourceLocation(powerofmagic.MODID, "blocks/liquidfire_flow"));
     public static Fluid liquidWaterSource = new Fluid("watersource", new ResourceLocation(powerofmagic.MODID, "blocks/watersource_still"),new ResourceLocation(powerofmagic.MODID, "blocks/watersource_flow"));
@@ -23,9 +23,9 @@ public class MGFluids {
     public static void init() {
 
         liquidMana = registerFluid(liquidMana);
-        liquidFire = registerFluid(liquidWaterSource);
+        liquidWaterSource = registerFluid(liquidWaterSource);
         liquidGrass = registerFluid(liquidGrass);
-        liquidWaterSource = registerFluid(liquidFire);
+        liquidFire = registerFluid(liquidFire);
 
         FluidRegistry.addBucketForFluid(liquidMana);
         FluidRegistry.addBucketForFluid(liquidWaterSource);
