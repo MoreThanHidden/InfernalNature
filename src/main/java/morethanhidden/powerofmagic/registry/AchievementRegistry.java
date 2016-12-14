@@ -11,7 +11,7 @@ public class AchievementRegistry {
     public static Achievement stickyooze;
 
     public static void init() {
-        minegem = new Achievement("achievement.minegem", "minegem", 0, 0, ItemRegistry.regularGem, (Achievement) null).initIndependentStat().registerStat();
+        minegem = new Achievement("achievement.minegem", "minegem", 0, 0, ItemRegistry.gem, (Achievement) null).initIndependentStat().registerStat();
         //stickyooze = new Achievement("achievement.stickyooze", "stickyooze", 2, 1,  ItemRegistry.bucketliquidGrass, minegem).registerStat();
         if (powerofmagic.ShockingLiquid = true) {
             //electrifying = new Achievement("achievement.electrifying", "electrifying", 2, 3,  ItemRegistry.bucketliquidMana, minegem).registerStat();

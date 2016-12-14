@@ -11,13 +11,13 @@ public class GemOnMineEvent {
 
 	@SubscribeEvent
 	public void onPickupGemOre(PlayerEvent.ItemPickupEvent e){
-		if(e.pickedUp.getEntityItem().isItemEqual(new ItemStack(ItemRegistry.regularGem, 1, 0))){
+		if(e.pickedUp.getEntityItem().isItemEqual(new ItemStack(ItemRegistry.gem, 1, 0))){
 			e.player.addStat(AchievementRegistry.minegem, 1);
 		}
-		if(e.pickedUp.getEntityItem().isItemEqual(new ItemStack(ItemRegistry.regularGem, 1, 1))){
+		if(e.pickedUp.getEntityItem().isItemEqual(new ItemStack(ItemRegistry.gem, 1, 1))){
 			e.player.addStat(AchievementRegistry.minegem, 1);
 		}
-		if(e.pickedUp.getEntityItem().isItemEqual(new ItemStack(ItemRegistry.regularGem, 1, 2))){
+		if(e.pickedUp.getEntityItem().isItemEqual(new ItemStack(ItemRegistry.gem, 1, 2))){
 			e.player.addStat(AchievementRegistry.minegem, 1);
 		}
 	}

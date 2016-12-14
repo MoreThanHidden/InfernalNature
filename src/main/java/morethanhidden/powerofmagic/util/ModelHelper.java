@@ -2,7 +2,6 @@ package morethanhidden.powerofmagic.util;
 
 
 import morethanhidden.powerofmagic.powerofmagic;
-import morethanhidden.powerofmagic.registry.ItemRegistry;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -25,13 +24,13 @@ public class ModelHelper {
         if (!name.contains(":")) {
             name = String.format("%s:%s", powerofmagic.MODID, name);
         }
-        String type = name + suffix;
+        String type = name;
         type = type.toLowerCase(Locale.ROOT);
 
-        ModelLoader.setCustomModelResourceLocation(item, metadata, new ModelResourceLocation(type, "inventory"));
+        ModelLoader.setCustomModelResourceLocation(item, metadata, new ModelResourceLocation(type, suffix));
     }
 
-    public void registerVariant(Item item, ResourceLocation... resources) {
+    public static void registerVariant(Item item, ResourceLocation... resources) {
         ModelBakery.registerItemVariants(item, resources);
     }
 

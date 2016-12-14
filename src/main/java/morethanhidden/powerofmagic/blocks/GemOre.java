@@ -52,24 +52,24 @@ public class GemOre extends Block{
 
 			 switch (luckDraw) {
 				case 0:
-         			ret.add(new ItemStack(ItemRegistry.regularGem, 1, 0));
+         			ret.add(new ItemStack(ItemRegistry.gem, 1, 0));
 					break;
 				case 1:
-					ret.add(new ItemStack(ItemRegistry.regularGem, 1, 1));
+					ret.add(new ItemStack(ItemRegistry.gem, 1, 1));
 					break;
 				case 2:
-					ret.add(new ItemStack(ItemRegistry.regularGem, 1 , 2));
+					ret.add(new ItemStack(ItemRegistry.gem, 1 , 2));
 					break;
 
          	 }switch (luckDraw2) {
                 case 0:
-                    ret.add(new ItemStack(ItemRegistry.fragmentGem, 1, 0));
+                    ret.add(new ItemStack(ItemRegistry.gem, 1, 3));
                     break;
                 case 1:
-                    ret.add(new ItemStack(ItemRegistry.fragmentGem, 1, 1));
+                    ret.add(new ItemStack(ItemRegistry.gem, 1, 4));
                     break;
                 case 2:
-                    ret.add(new ItemStack(ItemRegistry.fragmentGem, 1, 2));
+                    ret.add(new ItemStack(ItemRegistry.gem, 1, 5));
                     break;
             }
 

@@ -1,6 +1,8 @@
 package morethanhidden.powerofmagic.Client;
 
-        import morethanhidden.powerofmagic.registry.BlockRegistry;
+import morethanhidden.powerofmagic.api.IModelRegister;
+import morethanhidden.powerofmagic.registry.BlockRegistry;
+import morethanhidden.powerofmagic.registry.ItemRegistry;
 import morethanhidden.powerofmagic.util.BlockModelResolver;
 import morethanhidden.powerofmagic.util.ModelHelper;
 import net.minecraft.item.Item;
@@ -15,6 +17,9 @@ public class ItemModelRegistry {
         ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.blockGemPurple), 0);
         ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.gemOre), 0);
         ModelHelper.registerItemModel(Item.getItemFromBlock(BlockRegistry.blockCable), 0);
+
+        //Items
+        ((IModelRegister)ItemRegistry.gem).registerModels();
 
         MinecraftForge.EVENT_BUS.register(new BlockModelResolver());
     }
