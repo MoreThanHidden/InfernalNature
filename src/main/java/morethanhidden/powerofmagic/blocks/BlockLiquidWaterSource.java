@@ -21,7 +21,7 @@ public class BlockLiquidWaterSource extends BlockFluidClassic{
                 super(fluid, material);
                 setCreativeTab(powerofmagic.tabpowerofmagic);
                 setUnlocalizedName("blockliquidwatersource");
-                setRegistryName(powerofmagic.MODID, getLocalizedName().substring(5));
+                setRegistryName(powerofmagic.MODID, "fluid_block#watersource");
         }
        
         @Override

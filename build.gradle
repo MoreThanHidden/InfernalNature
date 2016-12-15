@@ -41,8 +41,7 @@ repositories {
 }
 
 dependencies {
-    deobfCompile name: 'mthcore', version: "1.11-0.1a-sources", ext: 'jar'
-    runtime name: 'mthcore', version: "1.11-0.1a", ext: 'jar'
+    compile name: 'mthcore', version: "1.11-0.1a", ext: 'jar'
 }
 
 processResources

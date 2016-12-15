@@ -21,7 +21,7 @@ public class BlockLiquidMana extends BlockFluidClassic{
                 setCreativeTab(powerofmagic.tabpowerofmagic);
                 setLightLevel(0.625F);
                 setUnlocalizedName("blockliquidmana");
-                setRegistryName(powerofmagic.MODID, getLocalizedName().substring(5));
+                setRegistryName(powerofmagic.MODID, "fluid_block#mana");
         }
         
         @Override

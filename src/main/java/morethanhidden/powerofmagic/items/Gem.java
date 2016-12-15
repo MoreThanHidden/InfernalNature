@@ -1,8 +1,8 @@
 package morethanhidden.powerofmagic.items;
 
-import morethanhidden.powerofmagic.api.IModelRegister;
+import morethanhidden.MTHCore.api.IModelRegister;
 import morethanhidden.powerofmagic.powerofmagic;
-import morethanhidden.powerofmagic.util.ModelHelper;
+import morethanhidden.MTHCore.util.ModelHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

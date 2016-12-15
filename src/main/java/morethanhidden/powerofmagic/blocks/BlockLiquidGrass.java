@@ -21,7 +21,7 @@ public class BlockLiquidGrass extends BlockFluidClassic{
                 super(fluid, material);
                 setCreativeTab(powerofmagic.tabpowerofmagic);
                 setUnlocalizedName("blockliquidgrass");
-                setRegistryName(powerofmagic.MODID, getLocalizedName().substring(5));
+                setRegistryName(powerofmagic.MODID, "fluid_block#grass");
         }
         
         @Override
