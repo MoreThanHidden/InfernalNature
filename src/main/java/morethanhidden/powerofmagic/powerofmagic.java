@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-	@Mod(modid="powerofmagic", name="Power Of Magic", version="0.2")
+	@Mod(modid="powerofmagic", name="Power Of Magic", version="0.2", dependencies = "required-after:mthcore")
 	public class powerofmagic {
 
 			public static String MODID = "powerofmagic";

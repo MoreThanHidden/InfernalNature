@@ -41,7 +41,7 @@ repositories {
 }
 
 dependencies {
-    compile name: 'mthcore', version: "1.11-0.1a", ext: 'jar'
+    compile name: 'mthcore', version: "1.11-0.4a", ext: 'jar'
 }
 
 processResources
