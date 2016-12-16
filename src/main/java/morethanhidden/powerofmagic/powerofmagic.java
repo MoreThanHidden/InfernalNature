@@ -11,7 +11,6 @@ import morethanhidden.powerofmagic.registry.PMFluidRegistry;
 import morethanhidden.powerofmagic.world.MolecularWorld;
 import morethanhidden.powerofmagic.world.WorldGenMoleculer;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -42,7 +41,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 	            @Override
 	            @SideOnly(Side.CLIENT)
 	            public ItemStack getTabIconItem() {
-	                return new ItemStack(Items.BOOK);
+	                return PMFluidRegistry.bucketMana;
 	            }
 	        };
 

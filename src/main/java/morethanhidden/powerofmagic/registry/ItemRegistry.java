@@ -7,8 +7,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemRegistry {
 
-
-    public static Item gem = new SubItem(powerofmagic.MODID, "gem", new String[] {"orange", "purple", "green", "orangef", "purplef", "greenf"});
+    //Can create subItems with a one liner now :)
+    public static Item gem = new SubItem(powerofmagic.MODID, "gem",
+            new String[] {"orange", "purple", "green", "orangef", "purplef", "greenf"})
+            .setCreativeTab(powerofmagic.tabpowerofmagic);
 
     public static void init() {
         registerItem(gem);
