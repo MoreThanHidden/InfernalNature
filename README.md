@@ -2,6 +2,8 @@ Power Of Magic
 ===================
 This is my test mod for different things I'm woking on, may do a release if it gets useful.
 
+Requires MTHCore
+
 Planned Features:
 - Liquid Mana
 - Mana Node
