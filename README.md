@@ -1,5 +1,7 @@
 Infernal Nature
 ===================
+![alt tag](https://raw.githubusercontent.com/MoreThanHidden/InfernalNature/master/Common/src/main/resources/logo.png)
+
 This is my test mod for different things I'm woking on, may do a release if it gets useful.
 
 Planned Features:
