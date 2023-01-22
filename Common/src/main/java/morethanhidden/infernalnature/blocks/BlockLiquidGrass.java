@@ -1,16 +1,5 @@
 package morethanhidden.infernalnature.blocks;
 
-import morethanhidden.infernalnature.InfernalNature;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3i;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.Fluid;
-
 import java.util.Random;
 
 public class BlockLiquidGrass extends BlockFluidClassic{
@@ -19,9 +8,9 @@ public class BlockLiquidGrass extends BlockFluidClassic{
         
         public BlockLiquidGrass(Fluid fluid, Material material) {
                 super(fluid, material);
-                setCreativeTab(powerofmagic.tabpowerofmagic);
+                setCreativeTab(infernalnature.tabinfernalnature);
                 setUnlocalizedName("blockliquidgrass");
-                setRegistryName(powerofmagic.MODID, "fluid_block#grass");
+                setRegistryName(Constants.MOD_ID, "fluid_block#grass");
         }
         
         @Override

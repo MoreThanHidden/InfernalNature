@@ -1,21 +1,13 @@
 package morethanhidden.infernalnature.blocks;
 
-import morethanhidden.infernalnature.InfernalNature;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.world.level.block.Block;
 
-public class GemBlock extends Block{
-	
-	public GemBlock (String uname) {
-		super(Material.ROCK);
-		setCreativeTab(powerofmagic.tabpowerofmagic);
-        setUnlocalizedName(uname);
-        setRegistryName(powerofmagic.MODID, uname);
-	}
+public class GemBlock extends Block {
 
-    public String getUnlocalizedName() {
-        return super.getUnlocalizedName().substring(5);
+    public GemBlock(Properties properties) {
+        super(properties);
     }
+
 }
 
 

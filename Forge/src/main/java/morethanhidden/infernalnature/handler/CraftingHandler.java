@@ -1,13 +1,12 @@
 package morethanhidden.infernalnature.handler;
 
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class CraftingHandler
 {
-@SubscribeEvent
-    public void onCrafting(PlayerEvent.ItemCraftedEvent event)
-    {
+    @SubscribeEvent
+    public void onCrafting(PlayerEvent.ItemCraftedEvent event){
      /*if (event.crafting.getItem() == ItemRegistry.bucketliquidWaterSource ) {
          event.player.addStat(AchievementRegistry.stickyooze, 1);
         }

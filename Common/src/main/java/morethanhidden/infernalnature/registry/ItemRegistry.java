@@ -1,23 +1,15 @@
 package morethanhidden.infernalnature.registry;
 
-import morethanhidden.MTHCore.items.SubItem;
-import morethanhidden.infernalnature.InfernalNature;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.world.item.Item;
 
 public class ItemRegistry {
 
-    //Can create subItems with a one liner now :)
-    public static Item gem = new SubItem(powerofmagic.MODID, "gem",
-            new String[] {"orange", "purple", "green", "orangef", "purplef", "greenf"})
-            .setCreativeTab(powerofmagic.tabpowerofmagic);
+    public static Item infernalGem = new Item(new Item.Properties());
+    public static Item natureGem = new Item(new Item.Properties());
+    public static Item mysticGem = new Item(new Item.Properties());
 
-    public static void init() {
-        registerItem(gem);
-    }
-
-    private static void registerItem(Item item) {
-        GameRegistry.register(item);
-    }
+    public static Item infernalFragment = new Item(new Item.Properties());
+    public static Item natureFragment = new Item(new Item.Properties());
+    public static Item mysticFragment = new Item(new Item.Properties());
 
 }

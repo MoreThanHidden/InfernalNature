@@ -1,6 +1,6 @@
 {
     "textures": {
-        "all": "powerofmagic:blocks/blockCable"
+        "all": "infernalnature:blocks/blockCable"
     },
     "elements": [
         {

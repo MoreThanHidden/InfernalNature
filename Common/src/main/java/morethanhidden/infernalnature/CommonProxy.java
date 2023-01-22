@@ -1,6 +1,6 @@
 package morethanhidden.infernalnature;
 
-public class common {
+public class CommonProxy {
 
 	public void registerRenderers() {
     	

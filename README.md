@@ -5,13 +5,12 @@ This is my test mod for different things I'm woking on, may do a release if it g
 Planned Features:
 - Magic Energy (3 Types Nature, Infernal, Mystic)
 - Magic Core (Awakening Ritual)
-- Skill Tree
+- Skill Tree (Advancement Based)
 - Wand / Staff (Toggle between Types)
+- Transmutation (In World)
 - Mystic Gems (Match Types)
 - Gem Ore
-- Dynamo
-- Generator
-- Boiler
-- Processor (Furnace/Pulveriser)
 - Ancient Warriors/Mages (Mobs)
-- Temples (World Gen)
+- Summon Dungeons to Unlock Next Tier
+- Gilded Blackstone Summoning Gate (Blackstone Sockets)
+- Information Book

@@ -1,12 +1,10 @@
-package morethanhidden.infernalnature.Client;
+package morethanhidden.infernalnature.client;
 
-import morethanhidden.MTHCore.util.FluidStateMapper;
-import morethanhidden.infernalnature.InfernalNature;
+import morethanhidden.infernalnature.Constants;
 import morethanhidden.infernalnature.registry.PMFluidRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fluids.Fluid;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 public class FluidModelRegistry {
 
@@ -24,8 +22,8 @@ public class FluidModelRegistry {
 
         Block block = fluid.getBlock();
         if(block != null) {
-            Item item = Item.getItemFromBlock(block);
-            FluidStateMapper mapper = new FluidStateMapper(fluid, powerofmagic.MODID, "fluid_block");
+            Item item = Item.byBlock(block);
+            FluidStateMapper mapper = new FluidStateMapper(fluid, Constants.MOD_ID, "fluid_block");
 
             if(item != null) {
                 ModelLoader.registerItemVariants(item);
