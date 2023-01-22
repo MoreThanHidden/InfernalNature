@@ -1,26 +1,17 @@
-Power Of Magic
+Infernal Nature
 ===================
 This is my test mod for different things I'm woking on, may do a release if it gets useful.
 
-Requires MTHCore
-
 Planned Features:
-- Liquid Mana
-- Mana Node
-- Wand
-- Gems
+- Magic Energy (3 Types Nature, Infernal, Mystic)
+- Magic Core (Awakening Ritual)
+- Skill Tree
+- Wand / Staff (Toggle between Types)
+- Mystic Gems (Match Types)
 - Gem Ore
-- Wrench
-- RF/EU Support
-- Mage Dynamo
-- Mage Generator
-- Mage Boiler
-- Mage Processor (Furnace/Pulveriser)
-- Suit & TopHat
-- Gem Fiber RF Cable
-- Gravity Offset Projector
-- Multiblock Tanks
-- Ancient Warriors/Mages
-- World of Power
-- Thaumcraft Aspects/Integration
-- Wireless RF/EU
+- Dynamo
+- Generator
+- Boiler
+- Processor (Furnace/Pulveriser)
+- Ancient Warriors/Mages (Mobs)
+- Temples (World Gen)

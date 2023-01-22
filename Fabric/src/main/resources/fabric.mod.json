@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "infernalnature",
+  "version": "${version}",
+
+  "name": "Infernal Nature",
+  "description": "A hopper that pulls items from a player's inventory.",
+  "authors": [
+    "MoreThanHidden"
+  ],
+  "contact": {
+    "sources": "https://github.com/MoreThanHidden/InfernalNature",
+    "issues": "https://github.com/MoreThanHidden/InfernalNature/issues"
+  },
+
+  "license": "LGPLV3 license",
+  "icon": "logo.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "morethanhidden.infernalnature.InfernalNature"
+    ]
+  },
+  "mixins": [
+  ],
+  "depends": {
+    "fabricloader": ">=0.12",
+    "fabric": ">=0.68",
+    "minecraft": ">=1.19.2"
+  }
+}
