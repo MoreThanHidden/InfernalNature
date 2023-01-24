@@ -2,7 +2,7 @@ package morethanhidden.infernalnature.registry;
 
 import net.minecraft.world.item.Item;
 
-public class ItemRegistry {
+public class InfernalNatureItems {
 
     public static Item infernalGem = new Item(new Item.Properties());
     public static Item natureGem = new Item(new Item.Properties());

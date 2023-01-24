@@ -4,13 +4,11 @@ import morethanhidden.infernalnature.client.ClientProxy;
 import morethanhidden.infernalnature.handler.CraftingHandler;
 import morethanhidden.infernalnature.handler.GemOnMineEvent;
 import morethanhidden.infernalnature.mob.MolecularMobs;
-import morethanhidden.infernalnature.registry.AchievementRegistry;
-import morethanhidden.infernalnature.registry.BlockRegistry;
-import morethanhidden.infernalnature.registry.ItemRegistry;
-import morethanhidden.infernalnature.registry.PMFluidRegistry;
+import morethanhidden.infernalnature.registry.InfernalNatureFluids;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,22 +25,22 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 			@SubscribeEvent
 			public void onRegisterCreativeModeTabs(CreativeModeTabEvent.Register event) {
- 				tabinfernalnature = event.registerCreativeModeTab(new ResourceLocation(Constants.MOD_ID, "infernalnature"), (builder) -> builder.title(Component.translatable("itemGroup.infernalnature")).icon(() -> PMFluidRegistry.bucketMana));
+ 				tabinfernalnature = event.registerCreativeModeTab(new ResourceLocation(Constants.MOD_ID, "infernalnature"), (builder) -> builder.title(Component.translatable("itemGroup.infernalnature")).icon(() -> new ItemStack(InfernalNatureFluids.LIQUID_FIRE_BUCKET)));
 			}
 
 			@SubscribeEvent
 			public void creativeTabEvent(CreativeModeTabEvent.BuildContents event) {
 				if(event.getTab() == tabinfernalnature) {
-					event.accept(ItemRegistry.infernalGem);
-					event.accept(ItemRegistry.natureGem);
-					event.accept(ItemRegistry.mysticGem);
-					event.accept(ItemRegistry.infernalFragment);
-					event.accept(ItemRegistry.natureFragment);
-					event.accept(ItemRegistry.mysticFragment);
-					event.accept(PMFluidRegistry.bucketMana);
-					event.accept(PMFluidRegistry.bucketFire);
-					event.accept(PMFluidRegistry.bucketGrass);
-					event.accept(PMFluidRegistry.bucketWaterSource);
+					//event.accept(InfernalNatureItems.infernalGem);
+					//event.accept(InfernalNatureItems.natureGem);
+					//event.accept(InfernalNatureItems.mysticGem);
+					//event.accept(InfernalNatureItems.infernalFragment);
+					//event.accept(InfernalNatureItems.natureFragment);
+					//event.accept(InfernalNatureItems.mysticFragment);
+					event.accept(InfernalNatureFluids.LIQUID_FIRE_BUCKET);
+					//event.accept(InfernalNatureFluids.LIQUID_GRASS_BUCKET);
+					//event.accept(InfernalNatureFluids.LIQUID_WATERSOURCE_BUCKET);
+					//event.accept(InfernalNatureFluids.LIQUID_MANA_BUCKET);
 				}
 			}
 
@@ -51,10 +49,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 				MinecraftForge.EVENT_BUS.register(new CraftingHandler());
 				MinecraftForge.EVENT_BUS.register(new GemOnMineEvent());
 
-				PMFluidRegistry.init();
-				BlockRegistry.init();
-				AchievementRegistry.init();
-
+				InfernalNatureFluids.register();
 				proxy.registerRenderers();
 
 	        }

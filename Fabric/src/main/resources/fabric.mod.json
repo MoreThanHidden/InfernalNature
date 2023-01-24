@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "morethanhidden.infernalnature.InfernalNature"
+    ],
+    "client": [
+      "morethanhidden.infernalnature.InfernalNatureClient"
     ]
   },
   "mixins": [

@@ -1,7 +1,5 @@
 package morethanhidden.infernalnature.mob;
 
-import morethanhidden.infernalnature.Constants;
-import net.minecraft.resources.ResourceLocation;
 
 public class MolecularMobs {
 	
@@ -17,9 +15,9 @@ public class MolecularMobs {
 	}
 
 	public static void createEntity(Class entityClass, String entityName, int solidColour, int spotColour, boolean worldspawn){
-	EntityRegistry.registerModEntity(new ResourceLocation(Constants.MOD_ID, entityClass.getName()), entityClass, entityName, 1, infernalnature.instance, 10, 1, true);
-	if (worldspawn){EntityRegistry.addSpawn(entityClass, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.PLAINS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.SWAMPLAND);}
-	EntityRegistry.registerEgg(new ResourceLocation(Constants.MOD_ID, entityClass.getName()), solidColour, spotColour);
+	//EntityRegistry.registerModEntity(new ResourceLocation(Constants.MOD_ID, entityClass.getName()), entityClass, entityName, 1, infernalnature.instance, 10, 1, true);
+	//if (worldspawn){EntityRegistry.addSpawn(entityClass, 40, 1, 2, EnumCreatureType.MONSTER, Biomes.PLAINS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.SWAMPLAND);}
+	//EntityRegistry.registerEgg(new ResourceLocation(Constants.MOD_ID, entityClass.getName()), solidColour, spotColour);
 	}
 	
 }
