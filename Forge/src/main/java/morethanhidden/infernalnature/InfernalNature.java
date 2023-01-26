@@ -1,20 +1,19 @@
 package morethanhidden.infernalnature;
 
 import morethanhidden.infernalnature.client.ClientProxy;
-import morethanhidden.infernalnature.handler.CraftingHandler;
-import morethanhidden.infernalnature.handler.GemOnMineEvent;
-import morethanhidden.infernalnature.mob.MolecularMobs;
 import morethanhidden.infernalnature.registry.InfernalNatureFluids;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 
 @Mod(Constants.MOD_ID)
 	public class InfernalNature {
@@ -45,18 +44,32 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 			}
 
 			public InfernalNature(){
+				//MinecraftForge.EVENT_BUS.register(new CraftingHandler());
+				//MinecraftForge.EVENT_BUS.register(new GemOnMineEvent());
+				FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+				FMLJavaModLoadingContext.get().getModEventBus().addListener((RegisterEvent event) -> {
+					if(event.getRegistryKey().equals(ForgeRegistries.FLUIDS.getRegistryKey())){
+						InfernalNatureFluids.registerFluid(((fluid, resourceLocation) ->
+								event.register(ForgeRegistries.FLUIDS.getRegistryKey(), resourceLocation, () -> fluid))
+						);
+					}else if(event.getRegistryKey().equals(ForgeRegistries.BLOCKS.getRegistryKey())){
+						InfernalNatureFluids.registerBlock(((block, resourceLocation) ->
+								event.register(ForgeRegistries.BLOCKS.getRegistryKey(), resourceLocation, () -> block))
+						);
+					}else if(event.getRegistryKey().equals(ForgeRegistries.ITEMS.getRegistryKey())){
+						InfernalNatureFluids.registerItem(((item, resourceLocation) ->
+								event.register(ForgeRegistries.ITEMS.getRegistryKey(), resourceLocation, () -> item))
+						);
+					}
 
-				MinecraftForge.EVENT_BUS.register(new CraftingHandler());
-				MinecraftForge.EVENT_BUS.register(new GemOnMineEvent());
-
-				InfernalNatureFluids.register();
+				});
 				proxy.registerRenderers();
 
 	        }
 
 			@SubscribeEvent
 			public void setup(FMLCommonSetupEvent event) {
-				MolecularMobs.mainRegistry();
-	        }
+				//MolecularMobs.mainRegistry();
+			}
 	        
 	}
