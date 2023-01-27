@@ -16,17 +16,17 @@ public class InfernalNatureClient implements ClientModInitializer {
         FluidRenderHandlerRegistry.INSTANCE.register(InfernalNatureFluids.LIQUID_FIRE, InfernalNatureFluids.LIQUID_FIRE, new SimpleFluidRenderHandler(
                 new ResourceLocation("minecraft:block/water_still"),
                 new ResourceLocation("minecraft:block/water_flow"),
-                0xF2631B
+                Constants.LIQUID_FIRE_COLOR
         ));
         FluidRenderHandlerRegistry.INSTANCE.register(InfernalNatureFluids.LIQUID_GRASS, InfernalNatureFluids.LIQUID_GRASS, new SimpleFluidRenderHandler(
                 new ResourceLocation("minecraft:block/water_still"),
                 new ResourceLocation("minecraft:block/water_flow"),
-                0x00FF00
+                Constants.LIQUID_GRASS_COLOR
         ));
         FluidRenderHandlerRegistry.INSTANCE.register(InfernalNatureFluids.LIQUID_WATERSOURCE, InfernalNatureFluids.LIQUID_WATERSOURCE, new SimpleFluidRenderHandler(
                 new ResourceLocation("minecraft:block/water_still"),
                 new ResourceLocation("minecraft:block/water_flow"),
-                0x0000FF
+                Constants.LIQUID_WATERSOURCE_COLOR
         ));
     }
 

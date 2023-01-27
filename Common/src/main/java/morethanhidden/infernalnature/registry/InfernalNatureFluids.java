@@ -1,7 +1,6 @@
 package morethanhidden.infernalnature.registry;
 
 import morethanhidden.infernalnature.Constants;
-import morethanhidden.infernalnature.fluids.LiquidBlockFluid;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -18,50 +17,17 @@ import java.util.function.BiConsumer;
 public class InfernalNatureFluids {
 
     //Liquid Fire Fluid using the LiquidBlockFluid class and overriding the getBlock and getBucket methods
-    public static FlowingFluid LIQUID_FIRE = new LiquidBlockFluid(Blocks.FIRE) {
-        @Override
-        public Block getBlock() {
-            return LIQUID_FIRE_BLOCK;
-        }
-
-        @Override
-        public Item getBucket() {
-            return LIQUID_FIRE_BUCKET;
-        }
-    };
-
+    public static FlowingFluid LIQUID_FIRE;
     public static Block LIQUID_FIRE_BLOCK;
     public static Item LIQUID_FIRE_BUCKET;
 
     //Liquid Grass Fluid using the LiquidBlockFluid class and overriding the getBlock and getBucket methods
-    public static FlowingFluid LIQUID_GRASS = new LiquidBlockFluid(Blocks.GRASS_BLOCK) {
-        @Override
-        public Block getBlock() {
-            return LIQUID_GRASS_BLOCK;
-        }
-
-        @Override
-        public Item getBucket() {
-            return LIQUID_GRASS_BUCKET;
-        }
-    };
-
+    public static FlowingFluid LIQUID_GRASS;
     public static Block LIQUID_GRASS_BLOCK;
     public static Item LIQUID_GRASS_BUCKET;
 
     // Liquid Water Fluid using the LiquidBlockFluid class and overriding the getBlock and getBucket methods
-    public static FlowingFluid LIQUID_WATERSOURCE = new LiquidBlockFluid(Blocks.WATER) {
-        @Override
-        public Block getBlock() {
-            return LIQUID_WATERSOURCE_BLOCK;
-        }
-
-        @Override
-        public Item getBucket() {
-            return LIQUID_WATERSOURCE_BUCKET;
-        }
-    };
-
+    public static FlowingFluid LIQUID_WATERSOURCE;
     public static Block LIQUID_WATERSOURCE_BLOCK;
     public static Item LIQUID_WATERSOURCE_BUCKET;
 

@@ -17,8 +17,12 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 
+import java.util.function.Supplier;
+
 public class LiquidBlockFluid extends FlowingFluid {
     final Block replacementBlock;
+    final Supplier<Item> bucket;
+    final Supplier<Block> block;
 
 
     @Override
@@ -33,16 +37,18 @@ public class LiquidBlockFluid extends FlowingFluid {
 
     @Override
     public Item getBucket() {
-        return null;
+        return bucket.get();
     }
 
     public Block getBlock() {
-        return null;
+        return block.get();
     }
 
 
-    public LiquidBlockFluid(Block replacementBlock) {
+    public LiquidBlockFluid(Block replacementBlock, Supplier<Item> bucket, Supplier<Block> block){
         this.replacementBlock = replacementBlock;
+        this.bucket = bucket;
+        this.block = block;
     }
 
     @Override
