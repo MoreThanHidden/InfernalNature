@@ -2,9 +2,9 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "all": "infernalnature:blocks/blockgem_green"
+            "all": "infernalnature:block/blockgem_green"
         },
-        "model": "infernalnature:cube.obj",
+        "model": "infernalnature:block/cube.obj",
         "uvlock": true
     },
     "variants": {

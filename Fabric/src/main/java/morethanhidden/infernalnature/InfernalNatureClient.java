@@ -1,9 +1,12 @@
 package morethanhidden.infernalnature;
 
+import morethanhidden.infernalnature.registry.InfernalNatureBlocks;
 import morethanhidden.infernalnature.registry.InfernalNatureFluids;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 
 public class InfernalNatureClient implements ClientModInitializer {
@@ -28,6 +31,9 @@ public class InfernalNatureClient implements ClientModInitializer {
                 new ResourceLocation("minecraft:block/water_flow"),
                 Constants.LIQUID_WATERSOURCE_COLOR
         ));
+
+        BlockRenderLayerMap.INSTANCE.putBlock(InfernalNatureBlocks.gemOre, RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfernalNatureBlocks.gemDeepslate, RenderType.translucent());
     }
 
 }

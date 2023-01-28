@@ -1,6 +1,26 @@
 {
-  "item.infernalnature.liquid_fire_bucket": "Liquid Fire Bucket",
-  "item.infernalnature.liquid_grass_bucket": "Liquid Grass Bucket",
-  "item.infernalnature.liquid_watersource_bucket": "Liquid Water Source Bucket",
-  "itemGroup.infernalnature": "Infernal Nature"
+    "itemGroup.infernalnature": "Infernal Nature",
+
+    "item.infernalnature.liquid_fire_bucket": "Liquid Fire Bucket",
+    "item.infernalnature.liquid_grass_bucket": "Liquid Grass Bucket",
+    "item.infernalnature.liquid_watersource_bucket": "Liquid Water Source Bucket",
+
+    "item.infernalnature.nature_gem": "Nature Gem",
+    "item.infernalnature.infernal_gem": "Infernal Gem",
+    "item.infernalnature.mystic_gem": "Mystic Gem",
+
+    "item.infernalnature.nature_fragment": "Nature Fragment",
+    "item.infernalnature.infernal_fragment": "Infernal Fragment",
+    "item.infernalnature.mystic_fragment": "Mystic Fragment",
+
+    "block.infernalnature.nature_block": "Nature Block",
+    "block.infernalnature.infernal_block": "Infernal Block",
+    "block.infernalnature.mystic_block": "Mystic Block",
+
+    "block.infernalnature.liquid_fire": "Liquid Fire",
+    "block.infernalnature.liquid_grass": "Liquid Grass",
+    "block.infernalnature.liquid_watersource": "Liquid Water Source",
+
+    "block.infernalnature.gem_ore": "Gem Ore",
+    "block.infernalnature.gem_deepslate": "Deepslate Gem Ore"
 }

@@ -1,17 +1,26 @@
 package morethanhidden.infernalnature;
 
 import morethanhidden.infernalnature.fluids.LiquidBlockFluid;
+import morethanhidden.infernalnature.registry.InfernalNatureBlocks;
 import morethanhidden.infernalnature.registry.InfernalNatureFluids;
+import morethanhidden.infernalnature.registry.InfernalNatureItems;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class InfernalNature implements ModInitializer {
 
@@ -39,12 +48,28 @@ public class InfernalNature implements ModInitializer {
         InfernalNatureFluids.registerFluid(((fluid, resourceLocation) -> Registry.register(BuiltInRegistries.FLUID, resourceLocation, fluid)));
         InfernalNatureFluids.registerBlock(((block, resourceLocation) -> Registry.register(BuiltInRegistries.BLOCK, resourceLocation, block)));
         InfernalNatureFluids.registerItem(((item, resourceLocation) -> Registry.register(BuiltInRegistries.ITEM, resourceLocation, item)));
+        InfernalNatureBlocks.registerBlocks(((block, resourceLocation) -> Registry.register(BuiltInRegistries.BLOCK, resourceLocation, block)));
+        InfernalNatureBlocks.registerBlockItems(((item, resourceLocation) -> Registry.register(BuiltInRegistries.ITEM, resourceLocation, item)));
+        InfernalNatureItems.registerItems(((item, resourceLocation) -> Registry.register(BuiltInRegistries.ITEM, resourceLocation, item)));
 
         ItemGroupEvents.modifyEntriesEvent(tabinfernalnature).register(content -> {
             content.accept(InfernalNatureFluids.LIQUID_FIRE_BUCKET);
             content.accept(InfernalNatureFluids.LIQUID_GRASS_BUCKET);
             content.accept(InfernalNatureFluids.LIQUID_WATERSOURCE_BUCKET);
+            content.accept(InfernalNatureBlocks.blockGemInfernal);
+            content.accept(InfernalNatureBlocks.blockGemNature);
+            content.accept(InfernalNatureBlocks.blockGemMystic);
+            content.accept(InfernalNatureBlocks.gemOre);
+            content.accept(InfernalNatureBlocks.gemDeepslate);
+            content.accept(InfernalNatureItems.infernalGem);
+            content.accept(InfernalNatureItems.natureGem);
+            content.accept(InfernalNatureItems.mysticGem);
+            content.accept(InfernalNatureItems.infernalFragment);
+            content.accept(InfernalNatureItems.natureFragment);
+            content.accept(InfernalNatureItems.mysticFragment);
         });
+
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, ResourceKey.create(Registries.PLACED_FEATURE,new ResourceLocation("infernalnature","gem_ore")));
 
     }
 }
