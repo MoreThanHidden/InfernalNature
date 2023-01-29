@@ -6,17 +6,17 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.BiConsumer;
 
 public class InfernalNatureBlocks {
 
-    public static Block gemOre = new GemOre(Block.Properties.of(Material.STONE));
-    public static Block gemDeepslate = new GemCube(Block.Properties.of(Material.STONE));
-    public static Block blockGemNature = new GemBlock(Block.Properties.of(Material.STONE));
-    public static Block blockGemMystic = new GemBlock(Block.Properties.of(Material.STONE));
-    public static Block blockGemInfernal = new GemBlock(Block.Properties.of(Material.STONE));
+    public static Block gemOre = new GemOre(Block.Properties.copy(Blocks.DIAMOND_ORE));
+    public static Block gemDeepslate = new GemOre(Block.Properties.copy(Blocks.DEEPSLATE_DIAMOND_ORE));
+    public static Block blockGemNature = new GemBlock(Block.Properties.copy(Blocks.DIAMOND_BLOCK));
+    public static Block blockGemMystic = new GemBlock(Block.Properties.copy(Blocks.DIAMOND_BLOCK));
+    public static Block blockGemInfernal = new GemBlock(Block.Properties.copy(Blocks.DIAMOND_BLOCK));
 
 
     /**
