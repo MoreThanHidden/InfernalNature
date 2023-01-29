@@ -10,9 +10,12 @@ Planned Features:
 - Skill Tree (Advancement Based)
 - Wand / Staff (Toggle between Types)
 - Transmutation (In World)
-- Mystic Gems (Match Types)
-- Gem Ore
 - Ancient Warriors/Mages (Mobs)
 - Summon Dungeons to Unlock Next Tier
 - Gilded Blackstone Summoning Gate (Blackstone Sockets)
 - Information Book
+
+Completed Features:
+- Fire, Grass and Water Source Fluids
+- Mystic Gems (Match Types)
+- Gem Ore

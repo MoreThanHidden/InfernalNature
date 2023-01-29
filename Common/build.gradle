@@ -4,10 +4,26 @@ plugins {
 
 archivesBaseName = "${mod_name}-common-${minecraft_version}"
 
+repositories {
+    maven {
+        name = "JEI"
+        url "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name = "Jared"
+        url = "https://maven.blamejared.com/"
+    }
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
+
     compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
+
+    compileOnly "vazkii.patchouli:Patchouli-xplat:${minecraft_version}-78-SNAPSHOT"
+    compileOnly "mezz.jei:jei-1.19.2-common-api:11.2.0.247"
+
 }
 
 loom {

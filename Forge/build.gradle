@@ -62,6 +62,8 @@ sourceSets.main.resources.srcDir 'src/generated/resources'
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly project(":Common")
+
+    implementation fg.deobf("vazkii.patchouli:Patchouli:${minecraft_version}-78-SNAPSHOT")
 }
 
 tasks.withType(JavaCompile) {

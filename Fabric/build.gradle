@@ -13,6 +13,8 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
     implementation project(path: ':Common', configuration: 'namedElements')
+
+    //modImplementation "vazkii.patchouli:Patchouli:${minecraft_version}-78-FABRIC-SNAPSHOT"
 }
 
 loom {
