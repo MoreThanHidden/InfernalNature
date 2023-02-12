@@ -22,7 +22,7 @@
       "morethanhidden.infernalnature.InfernalNature"
     ],
     "client": [
-      "morethanhidden.infernalnature.InfernalNatureClient"
+      "morethanhidden.infernalnature.client.InfernalNatureClient"
     ]
   },
   "mixins": [

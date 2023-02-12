@@ -1,21 +1,21 @@
 package morethanhidden.infernalnature;
 
+import morethanhidden.infernalnature.client.InfernalNatureClient;
 import morethanhidden.infernalnature.fluids.InfernalNatureFluidTypes;
 import morethanhidden.infernalnature.registry.InfernalNatureBlocks;
 import morethanhidden.infernalnature.registry.InfernalNatureFluids;
 import morethanhidden.infernalnature.registry.InfernalNatureItems;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
@@ -57,6 +57,7 @@ public class InfernalNature {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onRegisterCreativeModeTabs);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::creativeTabEvent);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(InfernalNatureFluidTypes::registerFluidTypes);
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> FMLJavaModLoadingContext.get().getModEventBus().register(new InfernalNatureClient()));
 		addListener(ForgeRegistries.FLUIDS.getRegistryKey(), InfernalNatureFluids::registerFluid);
 		addListener(ForgeRegistries.BLOCKS.getRegistryKey(), InfernalNatureFluids::registerBlock);
 		addListener(ForgeRegistries.ITEMS.getRegistryKey(), InfernalNatureFluids::registerItem);
