@@ -74,6 +74,7 @@ public class InfernalNature implements ModInitializer {
             content.accept(InfernalNatureItems.infernalFragment);
             content.accept(InfernalNatureItems.natureFragment);
             content.accept(InfernalNatureItems.mysticFragment);
+            content.accept(InfernalNatureItems.crude_wand);
         });
 
         //Add the gem ore to the world

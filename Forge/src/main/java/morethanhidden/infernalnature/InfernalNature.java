@@ -64,6 +64,7 @@ public class InfernalNature {
 			event.accept(InfernalNatureItems.infernalFragment);
 			event.accept(InfernalNatureItems.natureFragment);
 			event.accept(InfernalNatureItems.mysticFragment);
+			event.accept(InfernalNatureItems.crude_wand);
 		}
 	}
 

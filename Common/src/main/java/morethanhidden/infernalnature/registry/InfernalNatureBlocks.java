@@ -10,6 +10,10 @@ import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.BiConsumer;
 
+/**
+ * Block Registry for Infernal Nature
+ * @author morethanhidden
+ */
 public class InfernalNatureBlocks {
 
     public static Block gemOre = new GemOre(Block.Properties.copy(Blocks.DIAMOND_ORE));
@@ -21,6 +25,7 @@ public class InfernalNatureBlocks {
 
     /**
      * Register Blocks
+     * @param register - BiConsumer to register the blocks
      */
     public static void registerBlocks(BiConsumer<Block, ResourceLocation> register) {
         register.accept(gemOre, new ResourceLocation(Constants.MOD_ID, "gem_ore"));
@@ -32,6 +37,7 @@ public class InfernalNatureBlocks {
 
     /**
      * Register Block Items
+     * @param register - BiConsumer to register the block items
      */
     public static void registerBlockItems(BiConsumer<Item, ResourceLocation> register) {
         register.accept(new BlockItem(gemOre, new Item.Properties()), new ResourceLocation(Constants.MOD_ID, "gem_ore"));

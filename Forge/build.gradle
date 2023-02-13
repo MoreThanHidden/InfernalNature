@@ -64,6 +64,21 @@ dependencies {
     compileOnly project(":Common")
 
     implementation fg.deobf("vazkii.patchouli:Patchouli:${minecraft_version}-78-SNAPSHOT")
+    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
+    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+}
+
+repositories {
+    maven {
+        // location of the maven that JEI
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
 }
 
 tasks.withType(JavaCompile) {

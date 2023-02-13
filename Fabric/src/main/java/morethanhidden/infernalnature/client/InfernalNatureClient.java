@@ -1,14 +1,19 @@
 package morethanhidden.infernalnature.client;
 
 import morethanhidden.infernalnature.Constants;
+import morethanhidden.infernalnature.client.colours.WandColour;
 import morethanhidden.infernalnature.client.renderers.EmissiveBakedModel;
 import morethanhidden.infernalnature.registry.InfernalNatureBlocks;
 import morethanhidden.infernalnature.registry.InfernalNatureFluids;
+import morethanhidden.infernalnature.registry.InfernalNatureItems;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.mixin.registry.sync.client.ItemColorsMixin;
+import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.*;
@@ -72,6 +77,9 @@ public class InfernalNatureClient implements ClientModInitializer {
             }
             return null;
         });
+
+        // Register Item Colour Handlers
+        ColorProviderRegistry.ITEM.register(new WandColour(), InfernalNatureItems.crude_wand);
 
     }
 

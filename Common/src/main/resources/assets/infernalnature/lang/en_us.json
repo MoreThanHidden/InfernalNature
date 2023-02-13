@@ -22,5 +22,7 @@
     "block.infernalnature.liquid_watersource": "Liquid Water Source",
 
     "block.infernalnature.gem_ore": "Gem Ore",
-    "block.infernalnature.gem_deepslate": "Deepslate Gem Ore"
+    "block.infernalnature.gem_deepslate": "Deepslate Gem Ore",
+
+    "item.infernalnature.crude_wand": "Crude Wand"
 }

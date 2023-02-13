@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "infernalnature:mystic_gem"
+    }
+  },
+  "result": {
+    "item": "infernalnature:mystic_block"
+  }
+}

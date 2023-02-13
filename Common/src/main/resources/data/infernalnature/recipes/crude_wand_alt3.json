@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  y",
+    " / ",
+    "x  "
+  ],
+  "key": {
+    "x": {
+      "item": "infernalnature:mystic_fragment"
+    },
+    "y": {
+      "item": "infernalnature:infernal_fragment"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "infernalnature:crude_wand",
+    "nbt": {
+      "gem_top" : 1,
+      "gem_bottom" : 2
+    }
+  }
+}

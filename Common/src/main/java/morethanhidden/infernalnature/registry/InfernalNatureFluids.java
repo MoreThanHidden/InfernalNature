@@ -14,6 +14,10 @@ import net.minecraft.world.level.material.Fluid;
 
 import java.util.function.BiConsumer;
 
+/**
+ * Fluid Registry for Infernal Nature
+ * @author morethanhidden
+ */
 public class InfernalNatureFluids {
 
     //Liquid Fire Fluid using the LiquidBlockFluid class and overriding the getBlock and getBucket methods
@@ -33,6 +37,7 @@ public class InfernalNatureFluids {
 
     /**
      * Register Fluids
+     * @param register - BiConsumer to register the fluids
      */
     public static void registerFluid(BiConsumer<Fluid, ResourceLocation> register) {
         register.accept(LIQUID_FIRE, new ResourceLocation(Constants.MOD_ID, "liquid_fire"));
@@ -42,6 +47,7 @@ public class InfernalNatureFluids {
 
     /**
      * Register Blocks
+     * @param register - BiConsumer to register the blocks
      */
     public static void registerBlock(BiConsumer<Block, ResourceLocation> register) {
         register.accept(LIQUID_FIRE_BLOCK = new LiquidBlock(LIQUID_FIRE, BlockBehaviour.Properties.copy(Blocks.WATER)){}, new ResourceLocation(Constants.MOD_ID, "liquid_fire"));
@@ -51,6 +57,7 @@ public class InfernalNatureFluids {
 
     /**
      * Register Items
+     * @param register - BiConsumer to register the items
      */
     public static void registerItem(BiConsumer<Item, ResourceLocation> register) {
         LIQUID_FIRE_BUCKET = new BucketItem(LIQUID_FIRE, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1));

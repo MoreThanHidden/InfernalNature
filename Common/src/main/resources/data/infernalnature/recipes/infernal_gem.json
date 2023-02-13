@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "infernalnature:infernal_fragment"
+    }
+  },
+  "result": {
+    "item": "infernalnature:infernal_gem"
+  }
+}
