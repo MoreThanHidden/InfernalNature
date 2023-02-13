@@ -23,16 +23,26 @@ import net.minecraftforge.registries.RegisterEvent;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+/**
+ * Main forge mod class
+ * @author morethanhidden
+ */
 @Mod(Constants.MOD_ID)
 public class InfernalNature {
 	//Creative tab
 	public static CreativeModeTab tabinfernalnature;
 
+	/**
+	 * Creative Tab Registration
+	 */
 	@SubscribeEvent
 	public void onRegisterCreativeModeTabs(CreativeModeTabEvent.Register event) {
 		tabinfernalnature = event.registerCreativeModeTab(new ResourceLocation(Constants.MOD_ID, "infernalnature"), (builder) -> builder.title(Component.translatable("itemGroup.infernalnature")).icon(() -> new ItemStack(InfernalNatureFluids.LIQUID_FIRE_BUCKET)));
 	}
 
+	/**
+	 * Register Creative Tab Items
+	 */
 	@SubscribeEvent
 	public void creativeTabEvent(CreativeModeTabEvent.BuildContents event) {
 		if(event.getTab() == tabinfernalnature) {
@@ -53,6 +63,9 @@ public class InfernalNature {
 		}
 	}
 
+	/**
+	 * Mod constructor
+	 */
 	public InfernalNature(){
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onRegisterCreativeModeTabs);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::creativeTabEvent);
@@ -67,6 +80,12 @@ public class InfernalNature {
 
 	}
 
+	/**
+	 * Add a listener to the mod event bus
+	 * @param registry The registry to listen for
+	 * @param consumer The consumer to call when the registry is registered
+	 * @param <T> The type of the registry
+	 */
 	private static <T> void addListener(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<T, ResourceLocation>> consumer) {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener((RegisterEvent event) -> {
 			if (registry.equals(event.getRegistryKey())) {

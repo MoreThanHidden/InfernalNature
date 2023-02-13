@@ -10,6 +10,10 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.BiFunction;
 
+/**
+ * Fabric implementation of the platform helper.
+ * @author morethanhidden
+ */
 public class FabricPlatformHelper implements IPlatformHelper {
 
     @Override

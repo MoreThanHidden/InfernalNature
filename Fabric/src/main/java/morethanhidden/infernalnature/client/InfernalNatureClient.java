@@ -13,15 +13,20 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.*;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.function.Function;
 
+/**
+ * Client side initialization for Infernal Nature (Fabric)
+ * @author morethanhidden
+ */
 public class InfernalNatureClient implements ClientModInitializer {
 
     /**
-     * Register the fluid render handlers
+     * Register the fluid render handlers and the emissive models
      */
     @Override
     public void onInitializeClient() {
@@ -53,13 +58,13 @@ public class InfernalNatureClient implements ClientModInitializer {
                 if (location.equals(new ModelResourceLocation("infernalnature", type, ""))) {
                     return new UnbakedModel() {
                         @Override
-                        public Collection<ResourceLocation> getDependencies() {return Collections.emptyList();}
+                        public @NotNull Collection<ResourceLocation> getDependencies() {return Collections.emptyList();}
 
                         @Override
-                        public void resolveParents(Function<ResourceLocation, UnbakedModel> function) {}
+                        public void resolveParents(@NotNull Function<ResourceLocation, UnbakedModel> function) {}
 
                         @Override
-                        public BakedModel bake(ModelBaker modelBaker, Function<Material, TextureAtlasSprite> function, ModelState modelState, ResourceLocation resourceLocation) {
+                        public BakedModel bake(@NotNull ModelBaker modelBaker, @NotNull Function<Material, TextureAtlasSprite> function, @NotNull ModelState modelState, @NotNull ResourceLocation resourceLocation) {
                             return new EmissiveBakedModel(modelBaker.bake(new ModelResourceLocation("infernalnature", type, "inventory"), modelState));
                         }
                     };
