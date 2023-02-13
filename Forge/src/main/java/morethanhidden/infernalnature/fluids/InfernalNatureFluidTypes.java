@@ -12,8 +12,15 @@ import net.minecraftforge.registries.RegisterEvent;
 
 import java.util.function.Consumer;
 
+/**
+ * Infernal Nature Fluid Types Event Handler
+ */
 public class InfernalNatureFluidTypes {
 
+    /**
+     * Register Fluid Types
+     * @param event Register Event
+     */
     @SubscribeEvent
     public static void registerFluidTypes(RegisterEvent event) {
         //Register Fluid Types

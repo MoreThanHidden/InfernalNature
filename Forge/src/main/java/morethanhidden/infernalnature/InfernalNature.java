@@ -29,11 +29,14 @@ import java.util.function.Consumer;
  */
 @Mod(Constants.MOD_ID)
 public class InfernalNature {
-	//Creative tab
+	/**
+	 * Infernal Nature Creative Tab
+	 */
 	public static CreativeModeTab tabinfernalnature;
 
 	/**
 	 * Creative Tab Registration
+	 * @param event Creative Tab Registration Event
 	 */
 	@SubscribeEvent
 	public void onRegisterCreativeModeTabs(CreativeModeTabEvent.Register event) {
@@ -42,6 +45,7 @@ public class InfernalNature {
 
 	/**
 	 * Register Creative Tab Items
+	 * @param event Creative Tab Build Contents Event
 	 */
 	@SubscribeEvent
 	public void creativeTabEvent(CreativeModeTabEvent.BuildContents event) {

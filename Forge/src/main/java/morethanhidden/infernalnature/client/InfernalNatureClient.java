@@ -14,10 +14,18 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Forge Client Event Handler
+ * @author morethanhidden
+ */
 @Mod.EventBusSubscriber(Dist.CLIENT)
 @OnlyIn(Dist.CLIENT)
 public class InfernalNatureClient {
 
+    /**
+     * Register the emissive models
+     * @param event Model Bake Event
+     */
     @SubscribeEvent
     public void onModelBakeEvent(ModelEvent.ModifyBakingResult event) {
         // Use Baked Model for Emissive Ore
