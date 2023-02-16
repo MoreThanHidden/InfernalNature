@@ -13,6 +13,6 @@ public class GemOre extends Block {
 
     @Override
     public int getLightBlock(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
-        return 10;
+        return 15;
     }
 }

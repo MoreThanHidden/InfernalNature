@@ -1,23 +1,34 @@
 {
   "name": "Chapter 1: Basic Magic",
-  "icon": "minecraft:writable_book",
+  "icon": "infernalnature:gem_ore",
   "category": "infernalnature:getting_started",
   "pages": [
     {
       "type": "text",
-      "text": "In this chapter, we'll cover the fundamentals of magic, including its origins, its various forms, and its role in the world of Infernal Nature.$(br)$(li)Origins of Magic $(li)Forms of Magic $(li)The Role of Magic"
+      "text": "In this chapter, we'll cover the fundamentals of magic, including its origins, its various forms, and its role in the world of Infernal Nature.$(br)$(li)Origins of Magic (Gem Ores)$(li)Forms of Magic (Fragments)$(li)The Role of Magic (Wands)"
+    },
+    {
+      "type": "spotlight",
+      "text": "$(l)Origins of Magic$()$(br2)The origins of magic can be traced back to ancient mages, the first people to explore the mysteries of the natural world. To start your journey, you'll need to find a source of magic, such as a gem ore.",
+      "item": "infernalnature:gem_ore,infernalnature:gem_deepslate"
+    },
+    {
+      "type": "crafting",
+      "text": "$(l)Forms of Magic$()$(br2)Magic takes 3 forms Infernal, Nature and Mystic these fragments dropped from Gem Ores can be combined into gems.",
+      "recipe": "infernalnature:infernal_gem"
+    },
+    {
+      "type": "crafting",
+      "recipe": "infernalnature:nature_gem",
+      "recipe2": "infernalnature:mystic_gem"
     },
     {
       "type": "text",
-      "text": "$(l)Origins of Magic$()$(br2)The origins of magic can be traced back to ancient mages, the first people to explore the mysteries of the natural world. Over time, they developed techniques for harnessing the power of magic, and eventually, it became a cornerstone of their societies."
+      "text": "$(l)The Role of Magic$()$(br2)Magic plays a crucial role in the world of Infernal Nature. From the summoning of portals to the creation of powerful artifacts.$(br2)Let's start by crafting a crude wand, you can use any two fragments and a stick to craft the wand, according to your preference."
     },
     {
-      "type": "text",
-      "text": "$(l)Forms of Magic$()$(br2)Magic takes many forms, including Infernal, Nature and Mystic. Each type of magic has its own strengths and weaknesses, and requires different techniques to master."
-    },
-    {
-      "type": "text",
-      "text": "$(l)The Role of Magic$()$(br2)Magic plays a crucial role in the world of Infernal Nature. From the summoning of portals to the dungeons to the creation of powerful artifacts, magic is an essential part of life for those who seek adventure and power."
+      "type": "crafting",
+      "recipe": "infernalnature:crude_wand"
     }
   ]
 }

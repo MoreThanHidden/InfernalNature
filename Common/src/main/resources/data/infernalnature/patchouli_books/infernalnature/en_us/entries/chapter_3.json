@@ -1,0 +1,27 @@
+{
+  "name": "Chapter 3: Awakening [WIP]",
+  "icon": "infernalnature:crude_wand",
+  "category": "infernalnature:getting_started",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "In this chapter, we'll take a closer look at the Awakening Ritual, an essential step in unlocking the full potential of your magical core. $(br)$(li)What is a Awakening Ritual?$(li)Preparing for the Ritual $(li)Performing the Ritual $(li)The Aftermath of the Ritual"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)What is the Awakening Ritual?$()$(br2)The Awakening Ritual is a powerful rite that unlocks the full potential of your magical core, allowing you to tap into the deepest reserves of magic within you. This is an essential step for anyone who wants to become a true master of magic."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Preparing for the Ritual$()$(br2)In order to prepare for the Awakening Ritual, you must first gather the necessary materials and perform the required meditations. You'll also need to find a suitable location, such as a dungeon, to perform the ritual."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Performing the Ritual$()$(br2)The Awakening Ritual is a complex and dangerous procedure, and should only be attempted by those who have mastered the basics of magic. During the ritual, you'll need to channel your magic and use your powers to unlock the full potential of your magical core."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)The Aftermath of the Ritual$()$(br2)Once the Awakening Ritual is complete, you'll be able to tap into the deepest reserves of magic within you. This will allow you to perform more powerful spells and rituals, and will also grant you access to new magical abilities."
+    }
+  ]
+}

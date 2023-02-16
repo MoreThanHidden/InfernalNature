@@ -2,5 +2,6 @@
   "name": "Infernal Nature Tomb",
   "landing_text": "This tome contains all the knowledge you need to master the magic energy and awaken your core, from the creation of mystic gems and wands, to the depths ancient dungeons.",
   "version": 1,
+  "pamphlet": true,
   "creative_tab": "infernalnature:infernalnature"
 }

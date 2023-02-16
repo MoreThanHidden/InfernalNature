@@ -1,0 +1,18 @@
+{
+  "type": "patchouli:shapeless_book_recipe",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "infernalnature:infernal_fragment"
+    },
+    {
+      "item": "infernalnature:nature_fragment"
+    },
+    {
+      "item": "infernalnature:mystic_fragment"
+    }
+  ],
+  "book": "infernalnature:infernalnature"
+}
