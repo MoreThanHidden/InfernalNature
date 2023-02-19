@@ -7,6 +7,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.function.BiConsumer;
 
@@ -21,6 +22,7 @@ public class InfernalNatureBlocks {
     public static Block blockGemNature = new GemBlock(Block.Properties.copy(Blocks.DIAMOND_BLOCK));
     public static Block blockGemMystic = new GemBlock(Block.Properties.copy(Blocks.DIAMOND_BLOCK));
     public static Block blockGemInfernal = new GemBlock(Block.Properties.copy(Blocks.DIAMOND_BLOCK));
+    public static Block blockMysticCrafting = new MysticCraftingTable(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE));
 
 
     /**
@@ -33,6 +35,7 @@ public class InfernalNatureBlocks {
         register.accept(blockGemNature, new ResourceLocation(Constants.MOD_ID, "nature_block"));
         register.accept(blockGemMystic, new ResourceLocation(Constants.MOD_ID, "mystic_block"));
         register.accept(blockGemInfernal, new ResourceLocation(Constants.MOD_ID, "infernal_block"));
+        register.accept(blockMysticCrafting, new ResourceLocation(Constants.MOD_ID, "mystic_crafting"));
     }
 
     /**
