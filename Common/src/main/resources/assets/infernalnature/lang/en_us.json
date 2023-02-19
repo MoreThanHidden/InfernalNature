@@ -24,5 +24,11 @@
     "block.infernalnature.gem_ore": "Gem Ore",
     "block.infernalnature.gem_deepslate": "Deepslate Gem Ore",
 
-    "item.infernalnature.crude_wand": "Crude Wand"
+    "item.infernalnature.crude_wand": "Crude Wand",
+
+    "infernalnature.advancements.gem_ore.title": "Gem-eral Knowledge",
+    "infernalnature.advancements.gem_ore.description": "Obtain a gem fragment",
+
+    "infernalnature.advancements.root.title": "Infernal Nature",
+    "infernalnature.advancements.root.description": "Explore the magic of Infernal Nature"
 }

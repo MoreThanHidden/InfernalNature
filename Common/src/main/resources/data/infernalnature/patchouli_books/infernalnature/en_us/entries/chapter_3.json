@@ -2,6 +2,7 @@
   "name": "Chapter 3: Awakening [WIP]",
   "icon": "infernalnature:crude_wand",
   "category": "infernalnature:getting_started",
+  "advancement": "infernalnature:gem_ore",
   "pages": [
     {
       "type": "patchouli:text",

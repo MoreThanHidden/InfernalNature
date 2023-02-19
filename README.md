@@ -8,14 +8,14 @@ Planned Features:
 - Magic Energy (3 Types Nature, Infernal, Mystic)
 - Magic Core (Awakening Ritual)
 - Skill Tree (Advancement Based)
-- Wand / Staff (Toggle between Types)
 - Transmutation (In World)
 - Ancient Warriors/Mages (Mobs)
 - Summon Dungeons to Unlock Next Tier
 - Gilded Blackstone Summoning Gate (Blackstone Sockets)
-- Information Book
 
 Completed Features:
 - Fire, Grass and Water Source Fluids
 - Mystic Gems (Match Types)
 - Gem Ore
+- Wand
+- Information Book

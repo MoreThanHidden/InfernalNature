@@ -2,6 +2,7 @@
   "name": "Chapter 2: Liquid Magic",
   "icon": "infernalnature:liquid_fire_bucket",
   "category": "infernalnature:getting_started",
+  "advancement": "infernalnature:gem_ore",
   "pages": [
     {
       "type": "text",

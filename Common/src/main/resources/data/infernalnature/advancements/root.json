@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "infernalnature:crude_wand"
+    },
+    "title": {
+      "translate": "infernalnature.advancements.root.title"
+    },
+    "announce_to_chat": false,
+    "background": "infernalnature:textures/block/gem_ore.png",
+    "description": {
+      "translate": "infernalnature.advancements.root.description"
+    },
+    "show_toast": false,
+    "frame": "task"
+  },
+  "criteria": {
+    "obtain_fragment": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "infernalnature:infernal_fragment",
+              "infernalnature:nature_fragment",
+              "infernalnature:mystic_fragment"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
