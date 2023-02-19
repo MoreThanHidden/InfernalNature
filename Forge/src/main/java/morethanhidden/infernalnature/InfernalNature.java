@@ -58,6 +58,7 @@ public class InfernalNature {
 			event.accept(InfernalNatureBlocks.blockGemMystic);
 			event.accept(InfernalNatureBlocks.gemOre);
 			event.accept(InfernalNatureBlocks.gemDeepslate);
+			event.accept(InfernalNatureBlocks.blockMysticCrafting);
 			event.accept(InfernalNatureItems.infernalGem);
 			event.accept(InfernalNatureItems.natureGem);
 			event.accept(InfernalNatureItems.mysticGem);

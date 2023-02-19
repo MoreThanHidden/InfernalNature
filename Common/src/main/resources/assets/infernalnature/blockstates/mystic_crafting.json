@@ -1,5 +1,19 @@
 {
     "variants": {
-        "": [{"model": "infernalnature:block/mystic_crafting"}]
+        "facing=east": {
+            "model": "infernalnature:block/mystic_crafting",
+            "y": 270
+        },
+        "facing=north": {
+            "model": "infernalnature:block/mystic_crafting",
+            "y": 180
+        },
+        "facing=south": {
+            "model": "infernalnature:block/mystic_crafting"
+        },
+        "facing=west": {
+            "model": "infernalnature:block/mystic_crafting",
+            "y": 90
+        }
     }
 }

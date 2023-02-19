@@ -68,6 +68,7 @@ public class InfernalNature implements ModInitializer {
             content.accept(InfernalNatureBlocks.blockGemMystic);
             content.accept(InfernalNatureBlocks.gemOre);
             content.accept(InfernalNatureBlocks.gemDeepslate);
+            content.accept(InfernalNatureBlocks.blockMysticCrafting);
             content.accept(InfernalNatureItems.infernalGem);
             content.accept(InfernalNatureItems.natureGem);
             content.accept(InfernalNatureItems.mysticGem);

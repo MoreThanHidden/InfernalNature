@@ -48,6 +48,7 @@ public class InfernalNatureBlocks {
         register.accept(new BlockItem(blockGemNature, new Item.Properties()), new ResourceLocation(Constants.MOD_ID, "nature_block"));
         register.accept(new BlockItem(blockGemMystic, new Item.Properties()), new ResourceLocation(Constants.MOD_ID, "mystic_block"));
         register.accept(new BlockItem(blockGemInfernal, new Item.Properties()), new ResourceLocation(Constants.MOD_ID, "infernal_block"));
+        register.accept(new BlockItem(blockMysticCrafting, new Item.Properties()), new ResourceLocation(Constants.MOD_ID, "mystic_crafting"));
     }
 
 
