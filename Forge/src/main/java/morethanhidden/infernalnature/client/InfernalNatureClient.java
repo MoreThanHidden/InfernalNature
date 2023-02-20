@@ -1,13 +1,20 @@
 package morethanhidden.infernalnature.client;
 
+import morethanhidden.infernalnature.Constants;
 import morethanhidden.infernalnature.client.colours.WandColour;
 import morethanhidden.infernalnature.client.renderers.EmissiveBakedModel;
-import morethanhidden.infernalnature.items.Wand;
+import morethanhidden.infernalnature.client.screen.MysticCraftingScreen;
+import morethanhidden.infernalnature.inventory.MysticCraftingMenu;
 import morethanhidden.infernalnature.registry.InfernalNatureItems;
-import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.inventory.CraftingMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -17,6 +24,11 @@ import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -47,6 +59,24 @@ public class InfernalNatureClient {
             event.getModels().put(new ModelResourceLocation("infernalnature", type, ""), emissiveModel);
             event.getModels().put(new ModelResourceLocation("infernalnature", type, "inventory"), emissiveModel);
         }
+    }
+
+    public static final RegistryObject<MenuType<MysticCraftingMenu>> MYSTIC_CRAFTING;
+
+    static  {
+        DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, "mystic_crafting");
+        MYSTIC_CRAFTING = MENUS.register("mystic_crafting", () -> new MenuType<>(MysticCraftingMenu::new));
+        MENUS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    }
+
+    /**
+     * Register Screens
+     * @param event Client Setup Event
+     */
+    @SubscribeEvent
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        // Register the Mystic Crafting Screen
+        MenuScreens.register(MYSTIC_CRAFTING.get(), MysticCraftingScreen::new);
     }
 
     /**
